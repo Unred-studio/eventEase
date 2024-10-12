@@ -1,53 +1,131 @@
-import lassonde from '/workspaces/eventEase/ease/src/assets/Lassonde.png';
-import Bethune from '/workspaces/eventEase/ease/src/assets/Bethune.png'
+import React, { useState } from "react";
 
 function MailCards() {
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Function to toggle modal visibility
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card h-100">
-      <img src={lassonde} class="card-img-top" alt="Lassonde Events" style={{ width: "100%", height: "200px", objectFit: "cover" }} />
-      <div class="card-body">
-        <h5 class="card-title">Lassonde Events</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      {/* Bootstrap for the card and button */}
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        <div className="col">
+          <div className="card h-100">
+            <img src="..." className="card-img-top" alt="Lassonde Events" />
+            <div className="card-body">
+              <h5 className="card-title">Lassonde Events</h5>
+              <p className="card-text">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+            </div>
+            <div className="card-footer">
+              {/* Removed Bootstrap's data-bs-toggle */}
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={toggleModal}
+              >
+                Launch demo modal
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col">
-    <div class="card h-100">
-      <img src={Bethune} class="card-img-top" alt="Bethune Events" style={{ width: "100%", height: "200px", objectFit: "cover" }} />
-      <div class="card-body">
-        <h5 class="card-title">Bethune Events</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="York Events" style={{ width: "100%", height: "200px", objectFit: "cover" }} />
-      <div class="card-body">
-        <h5 class="card-title">York Events</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-</div>
 
-
+      {/* Modal */}
+      {isModalOpen && (
+        <div
+          className="modal fade show"
+          tabIndex="-1"
+          style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                {/* here goes the content of model */}
+                <h1 className="modal-title fs-5" id="exampleModalLabel">
+                  Modal title
+                </h1>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={toggleModal}
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <input
+                      class="form-check-input me-1"
+                      type="checkbox"
+                      value=""
+                      id="firstCheckboxStretched"
+                    />
+                    <label
+                      class="form-check-label stretched-link"
+                      for="firstCheckboxStretched"
+                    >
+                      First checkbox
+                    </label>
+                  </li>
+                  <li class="list-group-item">
+                    <input
+                      class="form-check-input me-1"
+                      type="checkbox"
+                      value=""
+                      id="secondCheckboxStretched"
+                    />
+                    <label
+                      class="form-check-label stretched-link"
+                      for="secondCheckboxStretched"
+                    >
+                      Second checkbox
+                    </label>
+                  </li>
+                  <li class="list-group-item">
+                    <input
+                      class="form-check-input me-1"
+                      type="checkbox"
+                      value=""
+                      id="thirdCheckboxStretched"
+                    />
+                    <label
+                      class="form-check-label stretched-link"
+                      for="thirdCheckboxStretched"
+                    >
+                      Third checkbox
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={toggleModal}
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={toggleModal}
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
