@@ -1,8 +1,19 @@
 const express = require("express");
-const { createItem, readItems, updateItem, deleteItems } = require("./crud");
+const {
+  createItem,
+  readItems,
+  readItemById,
+  updateItem,
+  deleteItems,
+} = require("./crud");
+const cors = require("cors");
 
 const app = express();
 const port = 3001;
+
+// Middleware to parse JSON request bodies
+app.use(cors());
+app.use(express.json());
 
 //Read everything when go to /api/emails
 app.get("/api/emails", (req, res) => {
@@ -27,7 +38,6 @@ app.get("/api/emails/:id", (req, res) => {
   });
 });
 
-
 //Create a new item when go to /api/emails
 app.post("/api/emails", (req, res) => {
   const { sender, content, edition } = req.body;
@@ -41,7 +51,7 @@ app.post("/api/emails", (req, res) => {
 });
 
 //Read a single item by id when go to /api/emails/:id
-app.update("/api/emails/:id", (req, res) => {
+app.put("/api/emails/:id", (req, res) => {
   const { id } = req.params;
   const { sender, content, edition } = req.body;
   updateItem(id, sender, content, edition, (err) => {
@@ -52,7 +62,6 @@ app.update("/api/emails/:id", (req, res) => {
     }
   });
 });
-
 
 //Delete a single item by id when go to /api/emails/:id
 app.delete("/api/emails/:id", (req, res) => {

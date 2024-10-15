@@ -20,8 +20,6 @@ const readItemById = (id, callback) => {
   db.get(sql, id, callback);
 };
 
-//read by sender
-
 //Update
 const updateItem = (id, sender, content, edition, callback) => {
   const sql = `UPDATE emails SET sender = ?, content = ?, edition = ? WHERE id = ?`;
@@ -35,4 +33,10 @@ const deleteItems = (id, callback) => {
 };
 
 //exporting the functions
-module.export = { createItem, readItems, updateItem, deleteItems };
+module.exports = {
+  createItem,
+  readItems,
+  readItemById,
+  updateItem,
+  deleteItems,
+};
