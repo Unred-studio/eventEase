@@ -1,4 +1,6 @@
-const express = require("express");
+const express = require("express"); //importing express
+
+//importing the functions from crud
 const {
   createItem,
   readItems,
@@ -9,7 +11,7 @@ const {
 const cors = require("cors");
 
 const app = express();
-const port = 3001;
+const port = 3001; //port number
 
 // Middleware to parse JSON request bodies
 app.use(cors());
@@ -41,7 +43,8 @@ app.get("/api/emails/:id", (req, res) => {
 //Create a new item when go to /api/emails
 app.post("/api/emails", (req, res) => {
   const { sender, content, edition } = req.body;
-  createItem(sender, content, edition, (err, data) => {
+  const contentStringify = content.replace(/\r\n/g, "\n");
+  createItem(sender, contentStringify, edition, (err, data) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
