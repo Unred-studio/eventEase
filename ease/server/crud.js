@@ -27,9 +27,9 @@ const updateItem = (id, sender, content, edition, callback) => {
 };
 
 //Delete
-const deleteItems = (id, callback) => {
-  const sql = `DELETE FROM emails WHERE id = ?`;
-  db.run(sql, id, callback);
+const deleteItems = (callback) => {
+  const sql = `DELETE FROM emails`; // Remove all rows from the emails table
+  db.run(sql, callback);
 };
 
 //exporting the functions
