@@ -19,20 +19,17 @@ async function readFile(filePath) {
 }
 
 //gemini api function
-const geminiApi = async () => {
-  try {
-    let instruction = readFile("./data/instruction.txt");
-    let email = readItems();
-  } catch (error) {
-    console.error("Error with instruction or email:", error);
-  }
+async function geminiApi() {
+  let instruction = await readFile("./master_json/instruction.txt");
+  const emailRows = await readItems();
+
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyDebXd-8pcUR-gBWKlAiFAFHMz4bifGVLA`;
   const data = {
     contents: [
       {
         parts: [
           {
-            text: `These are the instructions: ${instruction} /nThis is the email: ${email}`,
+            text: `These are the instructions: ${instruction} /nThis is the email: ${emailRows}`,
           },
         ],
       },
@@ -60,7 +57,7 @@ const geminiApi = async () => {
         "Content-Type": "application/json",
       },
     });
-
+    console.log("Full Response:", JSON.stringify(response.data, null, 2));
     // Access the generated content from the response
     const generatedContent = response.data.candidates?.[0]?.content;
 
@@ -89,7 +86,7 @@ const geminiApi = async () => {
   }
 
   return apiResponse;
-};
+}
 
 module.exports = {
   geminiApi,

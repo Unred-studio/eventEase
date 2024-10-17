@@ -14,18 +14,6 @@ const readItems = (callback) => {
   db.all(sql, [], callback);
 };
 
-//read particular id
-const readItemById = (id, callback) => {
-  const sql = `SELECT * FROM emails WHERE id =?`;
-  db.get(sql, id, callback);
-};
-
-//Update
-const updateItem = (id, sender, content, edition, callback) => {
-  const sql = `UPDATE emails SET sender = ?, content = ?, edition = ? WHERE id = ?`;
-  db.run(sql, [sender, content, edition, id], callback);
-};
-
 //Delete
 const deleteItems = (callback) => {
   const sql = `DELETE FROM emails`; // Remove all rows from the emails table
@@ -36,7 +24,5 @@ const deleteItems = (callback) => {
 module.exports = {
   createItem,
   readItems,
-  readItemById,
-  updateItem,
   deleteItems,
 };

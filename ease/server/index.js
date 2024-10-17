@@ -1,15 +1,9 @@
 const express = require("express"); //importing express
 const cors = require("cors"); //importing cors
 const fs = require("fs").promises; //importing fs with promises
-const geminiApi = require("./geminiApi");
-const {
-  createItem,
-  readItems,
-  readItemById,
-  updateItem,
-  deleteItems,
-} = require("./crud"); //importing the functions from crud
 const { geminiApi } = require("./geminiApi");
+const path = require("path");
+const { createItem, readItems, deleteItems } = require("./crud"); //importing the functions from crud
 
 /**
  * Writes the response object to a file as a JSON string. The file path and
@@ -57,40 +51,31 @@ app.post("/:emailType/:edition", (req, res) => {
       if (err) {
         return res.status(500).send(err.message);
       } else {
-        return res.status(200).send("Item created successfully");
+        console.log("Item created successfully");
       }
     }
   );
 
-  const response = geminiApi();
+  geminiApi()
+    .then((response) => {
+      // Define file path based on emailType
+      const response_filePath = path.join(
+        __dirname,
+        "master_json",
+        `${emailType}.json`
+      );
 
-  if (emailType === "lassonde") {
-    const response_filePath = path.join(
-      __dirname,
-      "master_json",
-      "lassonde.json"
-    );
-    writeResponseToFile(response_filePath, response);
-  } else if (emailType === "bethune") {
-    const response_filePath = path.join(
-      __dirname,
-      "master_json",
-      "bethune.json"
-    );
-    writeResponseToFile(response_filePath, response);
-  } else if (emailType === "york") {
-    const response_filePath = path.join(__dirname, "master_json", "york.json");
-    writeResponseToFile(response_filePath, response);
-  } else {
-    console.error("Invalid email type:", emailType);
-  }
+      // Write response to file
+      return writeResponseToFile(response_filePath, response);
+    })
+    .catch((error) => {
+      console.error("Error calling geminiApi:", error);
+    });
 
   //delete the item from database
-  deleteItems(id, (err) => {
+  deleteItems((err) => {
     if (err) {
       res.status(500).send(err.message);
-    } else {
-      res.status(200).send("Item deleted successfully");
     }
   });
 
