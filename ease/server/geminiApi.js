@@ -1,13 +1,8 @@
 const axios = require("axios"); // Importing axios
 const fs = require("fs").promises; // Importing fs with promises
-const {
-  createItem,
-  readItems,
-  readItemById,
-  updateItem,
-  deleteItems,
-} = require("./crud"); //importing the functions from crud
+const path = require("path"); //importing path
 
+//Read the instruction file
 async function readFile(filePath) {
   try {
     const data = await fs.readFile(filePath, "utf8");
@@ -18,10 +13,21 @@ async function readFile(filePath) {
   }
 }
 
+//Store the response fromm geminiApi into a master json file
+async function writeResponseToFile(filePath, response) {
+  try {
+    // Convert the response object to a JSON string
+    const jsonResponse = JSON.stringify(response, null, 2);
+    await fs.writeFile(filePath, jsonResponse);
+    console.log("File written successfully.");
+  } catch (err) {
+    console.error("Error writing the file:", err);
+  }
+}
+
 //gemini api function
-async function geminiApi() {
-  let instruction = await readFile("./master_json/instruction.txt");
-  const emailRows = await readItems();
+async function geminiApi({ emailType, edition, content }) {
+  let instruction = await readFile("./master_json/instruction.txt", "utf8");
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyDebXd-8pcUR-gBWKlAiFAFHMz4bifGVLA`;
   const data = {
@@ -29,7 +35,7 @@ async function geminiApi() {
       {
         parts: [
           {
-            text: `These are the instructions: ${instruction} /nThis is the email: ${emailRows}`,
+            text: `These are the instructions: ${instruction} /nThis is the sender: ${emailType}, This is the edition: ${edition} /nThis is the email: ${content}`,
           },
         ],
       },
@@ -57,7 +63,6 @@ async function geminiApi() {
         "Content-Type": "application/json",
       },
     });
-    console.log("Full Response:", JSON.stringify(response.data, null, 2));
     // Access the generated content from the response
     const generatedContent = response.data.candidates?.[0]?.content;
 
@@ -85,7 +90,7 @@ async function geminiApi() {
     console.error("Error:", error);
   }
 
-  return apiResponse;
+  writeResponseToFile(`./master_json/${emailType}.json`, apiResponse);
 }
 
 module.exports = {

@@ -1,0 +1,87 @@
+{
+  "sender": "bethune",
+  "edition": "8oct",
+  "events": [
+    {
+      "id": 1,
+      "name": "COFFEE WITH PROFS RESEARCH OPPORTUNITIES IN ENG AND COMP SCIE",
+      "summary": "Coffee with Profs Research Opportunities",
+      "date": null,
+      "time": null,
+      "location": null,
+      "selected": false
+    },
+    {
+      "id": 2,
+      "name": "YORK INTERNATIONAL GO GLOBAL INFORMATION SESSION @ BETHUNE COLLEGE",
+      "summary": "York International Go Global Info Session",
+      "date": "2024-10-28",
+      "time": null,
+      "location": "Bethune College",
+      "selected": false
+    },
+    {
+      "id": 3,
+      "name": "LEARNING SKILLS @ BETHUNE Study Strategies that WORK!",
+      "summary": "Learning Skills Study Strategies",
+      "date": "2024-10-30",
+      "time": "02:30 PM - 03:30 PM",
+      "location": "Room BC 203",
+      "selected": false
+    },
+    {
+      "id": 4,
+      "name": "RESUME & COVER LETTER WRITING",
+      "summary": "Resume & Cover Letter Writing",
+      "date": "2024-10-23",
+      "time": null,
+      "location": "Bethune College",
+      "selected": false
+    },
+    {
+      "id": 5,
+      "name": "FALL FOOD DRIVE",
+      "summary": "Bethune College Food Drive",
+      "date": "2024-10-07",
+      "time": null,
+      "location": "BCC office or Peer Mentor office (BC 122 or BC 208)",
+      "selected": false
+    },
+    {
+      "id": 6,
+      "name": "LOCKER RENTALS ARE AVAILABLE",
+      "summary": "Locker Rentals Available",
+      "date": null,
+      "time": null,
+      "location": "Office of the College Head (BC207)",
+      "selected": false
+    },
+    {
+      "id": 7,
+      "name": "Counselling Office Drop-in Hours",
+      "summary": "Counselling Office Drop-in Hours",
+      "date": "2024-10-15",
+      "time": null,
+      "location": null,
+      "selected": false
+    },
+    {
+      "id": 8,
+      "name": "2SLGBTQIA+ Support Group",
+      "summary": "2SLGBTQIA+ Support Group",
+      "date": "2024-10-29",
+      "time": "03:00 PM - 04:00 PM",
+      "location": "Student Counselling, Health & Well-Being (SCHW)",
+      "selected": false
+    },
+    {
+      "id": 9,
+      "name": "UHACK 2024",
+      "summary": "UNHack 2024 Sustainability Challenge",
+      "date": "2024-11-15",
+      "time": null,
+      "location": "Bergeron Centre",
+      "selected": false
+    }
+  ]
+}

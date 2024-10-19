@@ -1,0 +1,177 @@
+{
+  "sender": "lassonde",
+  "edition": "8oct",
+  "events": [
+    {
+      "id": 1,
+      "name": "UNHack 2024",
+      "summary": "Tackle real-world challenges",
+      "date": "2024-11-15",
+      "time": "null",
+      "location": "Bergeron Centre",
+      "selected": false
+    },
+    {
+      "id": 2,
+      "name": "ICAI’s 2024 International Day of Action (IDoA) for Academic Integrity",
+      "summary": "Upholding Integrity in a Dynamic Academic World",
+      "date": "2024-10-16",
+      "time": "null",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 3,
+      "name": "Annual Canadian Celebration of Women in Computing Conference (CAN-CWiC)",
+      "summary": "Premier event for young women in technology",
+      "date": "2024-10-25",
+      "time": "null",
+      "location": "York University",
+      "selected": false
+    },
+    {
+      "id": 4,
+      "name": "Climathon 2024",
+      "summary": "Hack climate solutions for the GTA",
+      "date": "2024-10-25",
+      "time": "null",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 5,
+      "name": "Co-op & Internship Information Session",
+      "summary": "Gain paid, hands-on learning",
+      "date": "2024-10-15",
+      "time": "02:30 PM - 04:00 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 6,
+      "name": "Co-op & Internship Information Session",
+      "summary": "Gain paid, hands-on learning",
+      "date": "2024-10-24",
+      "time": "02:00 PM - 03:30 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 7,
+      "name": "Resume fundamentals workshop",
+      "summary": "Prepare your resume",
+      "date": "2024-10-16",
+      "time": "01:00 PM - 02:00 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 8,
+      "name": "Interview fundamentals workshop",
+      "summary": "Prepare for interviews",
+      "date": "2024-10-18",
+      "time": "11:00 AM - 12:00 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 9,
+      "name": "Interview fundamentals workshop",
+      "summary": "Prepare for interviews",
+      "date": "2024-10-24",
+      "time": "11:00 AM - 12:00 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 10,
+      "name": "Drop-in Advising with Career Peer Educators",
+      "summary": "Get feedback on your resume",
+      "date": "null",
+      "time": "02:00 PM - 04:00 PM",
+      "location": "Bergeron Front Desk",
+      "selected": false
+    },
+    {
+      "id": 11,
+      "name": "Career Centre Strategies for Whiteboard Interview Success",
+      "summary": "Prepare for whiteboard interviews",
+      "date": "null",
+      "time": "02:00 PM - 03:30 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 12,
+      "name": "Discover BMO: Corporate Areas",
+      "summary": "Learn about BMO",
+      "date": "2024-10-22",
+      "time": "05:00 PM - 06:00 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 13,
+      "name": "Lassonde Run Club",
+      "summary": "Join the run club",
+      "date": "2024-10-14",
+      "time": "12:00 PM - 01:00 PM",
+      "location": "Bergeron Centre Lobby",
+      "selected": false
+    },
+    {
+      "id": 14,
+      "name": "Drop-In Yoga",
+      "summary": "Join the yoga session",
+      "date": "2024-10-14",
+      "time": "12:00 PM - 01:00 PM",
+      "location": "Bergeron Centre, Room 203",
+      "selected": false
+    },
+    {
+      "id": 15,
+      "name": "Co-op Job Search Appointments",
+      "summary": "Get job search help",
+      "date": "2024-10-14",
+      "time": "01:30 PM - 02:30 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 16,
+      "name": "Co-op Information Session",
+      "summary": "Gain paid, hands-on learning",
+      "date": "2024-10-14",
+      "time": "02:30 PM - 04:00 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 17,
+      "name": "Career Centre: Bergeron Front Desk In-person & Virtual Drop-ins",
+      "summary": "Get career advice",
+      "date": "2024-10-16",
+      "time": "02:00 PM - 04:00 PM",
+      "location": "Bergeron Front Desk",
+      "selected": false
+    },
+    {
+      "id": 18,
+      "name": "Resume Fundamentals for Co-op",
+      "summary": "Prepare your resume",
+      "date": "2024-10-16",
+      "time": "01:00 PM - 02:00 PM",
+      "location": "Online",
+      "selected": false
+    },
+    {
+      "id": 19,
+      "name": "Interview Fundamentals for Co-op",
+      "summary": "Prepare for interviews",
+      "date": "2024-10-18",
+      "time": "11:00 AM - 12:00 PM",
+      "location": "Online",
+      "selected": false
+    }
+  ]
+}

@@ -8,21 +8,24 @@ summary: A brief summary of the event less than 10 words.
 
 date: The date of the event in the format "YYYY-MM-DD". If no specific date is provided, return null.
 
-time: The time of the event in the format "HH:MM AM/PM". If no specific time is provided, return null.
+time: The time of the event in the format "HH:MM AM/PM - HH:MM AM/PM". If no specific time is provided, return null.
 (Note : If the time is provided in an ambiguous format (e.g., "Various times available", "Noon to 1 PM", or "8 AM to 2:30 PM"), interpret the time as accurately as possible: Convert "Noon" to "12:00 PM"; If a specific time range is not given (e.g., "event starts at 8 AM"), assume the event lasts 1 hour and provide both the start and end times; If no time is provided, or if it's ambiguous, return null for time.)
 
-location: The location of the event. If the event is held online (e.g., Zoom, Microsoft Teams, etc.), return "Online". If no location is provided, return null.
+location: The location of the event as provided in email[don't remove any important element of address]. If the event is held online (e.g., Zoom, Microsoft Teams, etc.), return "Online". If no location is provided, return null.
 
 
 selected: A boolean field initially set to false. This will be updated to true if the user selects the event via a checkbox.
 
 Additional Formatting:
-The JSON response should begin with an object that includes the name of the edition (e.g., lassonde: 8thOct), followed by an array of event objects.
+The JSON response should begin with an object that includes the name and edition (e.g., sender: lassonde and edition: 8thOct), followed by an array of event objects.
 Please ensure that the response is strictly in valid JSON format without any additional text, Markdown syntax, or commentary, as this will interfere with subsequent processing. The response should be a valid JSON array containing objects for each event.
-[
-  { "name": "edition_name" }, 
-  { event1 }, 
-  { event2 }, 
-  ...
-]
+{
+"sender": "lassonde",
+"edition": "8Oct",
+"events": [
+  {event1}, {event2}...
+  ]
+}
 Handle exceptions gracefully, and if any field information is missing or ambiguous, return null for that specific field.
+
+Note: Only use the information provided in the email, don't consult any other sources or any past memory. 
