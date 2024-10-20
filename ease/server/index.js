@@ -1,8 +1,7 @@
 const express = require("express"); //importing express
 const cors = require("cors"); //importing cors
-const fs = require("fs").promises; //importing fs with promises
 const { geminiApi } = require("./geminiApi"); //importing geminiApi
-const path = require("path"); //importing path
+const path = require("path");
 
 const port = 3001; //port number
 const app = express(); //creating an instance of express
@@ -10,6 +9,7 @@ const app = express(); //creating an instance of express
 // Middleware to parse JSON request bodies
 app.use(cors()); //helps to handle req and res from frontend
 app.use(express.text()); //body.req provides plain/text content-type
+app.use(express.static(path.join(__dirname, "master_json"))); //serving static json files to frontend
 
 //request for email, provide the email to the geminiApi function and store the response in a master json file
 app.post("/:emailType/:edition", (req, res) => {

@@ -1,51 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-function MailCards() {
-  const [selectedEvents, setSelectedEvents] = useState({
-    lassonde: [],
-    bethune: [],
-    york: [],
-  });
+function MailCards({ onDone }) {
+  //Using state to store the events user is intersted
+  const [emailJson, setEmailJson] = useState({ events: [] });
 
-  //Example Event data for each email
-  const eventData = {
-    lassonde: [
-      { id: 1, title: "Lassonde Hackathon", summary: "A 24-hour coding challenge." },
-      { id: 2, title: "AI Workshop", summary: "Intro to AI tools and practices." }
-    ],
-    bethune: [
-      { id: 1, title: "Bethune Science Talk", summary: "Latest research in molecular biology." },
-      { id: 2, title: "Robotics Fair", summary: "Showcase of student robotics projects." }
-    ],
-    york: [
-      { id: 1, title: "York Sports Meet", summary: "Annual sports events." },
-      { id: 2, title: "Cultural Fest", summary: "Celebration of diverse cultures at York." }
-    ],
-  };
-
-  
-  
   // Toggle modal visibility based on the card selected
   const [activeModal, setActiveModal] = useState(null); // To track which modal is open
   const toggleModal = (modalType) => {
     setActiveModal(modalType);
   };
 
-  // Handle checkbox changes
-  const handleCheckboxChange = (emailType, eventId) => {
-    setSelectedEvents((prevState) => {
-      const isChecked = prevState[emailType].includes(eventId);
-      const updatedEvents = isChecked
-        ? prevState[emailType].filter((id) => id !== eventId)
-        : [...prevState[emailType], eventId];
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!activeModal) return; // dont fetch if activeModal is null
+      try {
+        const response = await fetch(
+          `http://localhost:3001/${activeModal}.json`
+        );
+        const data = await response.json();
+        setEmailJson(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [activeModal]); // Dependency array includes activeModal
 
-      return { ...prevState, [emailType]: updatedEvents };
+  //Using state to store the events user is intersted
+  const [selectedEvents, setSelectedEvents] = useState([]);
+
+  const handleCheckboxChange = (eventId) => {
+    setSelectedEvents((prevSelected) => {
+      if (prevSelected.includes(eventId)) {
+        return prevSelected.filter((id) => id !== eventId); // Remove if already selected
+      } else {
+        return [...prevSelected, eventId]; // Add if not selected
+      }
     });
   };
 
+  const handleModalClose = () => {
+    setSelectedEvents([]);
+    toggleModal(null);
+  }
+
+
+  const handleDoneClick = () => {
+    onDone(selectedEvents);
+  };
+
+
   // Render modal for each email type
-  const renderModal = (emailType) => {
-    const events = eventData[emailType] || [];
+  const renderModal = (emailJson) => {
+    const events = emailJson.events;
 
     return (
       <div
@@ -59,29 +67,94 @@ function MailCards() {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                {emailType.charAt(0).toUpperCase() + emailType.slice(1)} Events
+                {emailJson.sender &&
+                  emailJson.sender.charAt(0).toUpperCase() +
+                    emailJson.sender.slice(1)}{" "}
+                Events:{" "}
+                {emailJson.edition && (
+                  <>
+                    {emailJson.edition.charAt(0)}
+                    <sup>th </sup>
+                    {" " +emailJson.edition.slice(1).charAt(0).toUpperCase() +
+                      emailJson.edition.slice(2)}
+                  </>
+                )}
               </h1>
               <button
                 type="button"
                 className="btn-close"
-                onClick={() => toggleModal(null)}
+                onClick={handleModalClose}
                 aria-label="Close"
               ></button>
             </div>
             <div className="modal-body">
               <ul className="list-group">
                 {events.map((event) => (
-                  <li key={event.id} className="list-group-item">
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value={event.id}
-                      checked={selectedEvents[emailType].includes(event.id)}
-                      onChange={() => handleCheckboxChange(emailType, event.id)}
-                    />
-                    <label className="form-check-label">
-                      {event.title} - {event.summary}
-                    </label>
+                  <li
+                    key={event.id}
+                    className="list-group-item d-flex align-items-center justify-content-start"
+                    onClick={() => handleCheckboxChange(event.id)} // Click anywhere on the list item to toggle
+                    style={{
+                      cursor: "pointer",
+                      transition: "background-color 0.3s ease",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <span
+                      className="custom-checkbox"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        minWidth: "24px",
+                        minHeight: "24px",
+                        width: "24px",
+                        height: "24px",
+                        border: "2px solid #007bff",
+                        borderRadius: "3px",
+                        marginRight: "10px",
+                        position: "relative",
+                        transition: "border-color 0.3s ease",
+                      }}
+                    >
+                      <input
+                        className="form-check-input me-1"
+                        type="checkbox"
+                        value={event.id}
+                        checked={selectedEvents.includes(event.id)}
+                        onChange={() => handleCheckboxChange(event.id)} // Keep checkbox functionality
+                        style={{ display: "none" }} // Hide default checkbox
+                      />
+                      {selectedEvents.includes(event.id) && (
+                        <span
+                          style={{
+                            position: "absolute",
+                            top: "2px",
+                            left: "6px",
+                            color: "#007bff",
+                            fontSize: "16px",
+                            fontWeight: "bold",
+                            lineHeight: "1", // Align checkmark properly
+                          }}
+                        >
+                          ✓
+                        </span>
+                      )}
+                    </span>
+                    <span
+                      className={`form-check-label ${
+                        selectedEvents.includes(event.id) ? "text-primary" : ""
+                      }`}
+                      style={{
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        maxWidth: "calc(100% - 40px)",
+                      }}
+                      title={event.name + " - " + event.summary} //creates Tooltip on hover
+                    >
+                      {event.name} - {event.summary}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -90,7 +163,8 @@ function MailCards() {
               <button
                 type="button"
                 className="btn btn-secondary"
-                onClick={() => toggleModal(null)}
+                onClick={handleModalClose}
+
               >
                 Close
               </button>
@@ -99,8 +173,8 @@ function MailCards() {
                 className="btn btn-primary"
                 onClick={() => {
                   toggleModal(null);
+                  handleDoneClick();
                   // TODO: Handle 'Done' action (e.g., navigate to timetable)
-                  
                 }}
               >
                 Done
@@ -114,76 +188,76 @@ function MailCards() {
 
   return (
     <>
-      <div className="row row-cols-1 row-cols-md-3 g-4">
-        {/* Lassonde Card */}
-        <div className="col">
-          <div className="card h-100">
-            <img src="..." className="card-img-top" alt="Lassonde Events" />
-            <div className="card-body">
-              <h5 className="card-title">Lassonde Events</h5>
-              <p className="card-text">
-                Check out the latest events happening at Lassonde School of Engineering.
-              </p>
-            </div>
-            <div className="card-footer">
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => toggleModal("lassonde")}
-              >
-                View Events
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Bethune Card */}
-        <div className="col">
-          <div className="card h-100">
-            <img src="..." className="card-img-top" alt="Bethune Events" />
-            <div className="card-body">
-              <h5 className="card-title">Bethune Events</h5>
-              <p className="card-text">
-                Discover what's going on at Bethune College this week.
-              </p>
-            </div>
-            <div className="card-footer">
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => toggleModal("bethune")}
-              >
-                View Events
-              </button>
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="row row-cols-1 row-cols-md-3 g-4 w-100 mx-auto">
+          {/* Lassonde Card */}
+          <div className="col">
+            <div className="card h-100">
+              <div className="card-body">
+                <h5 className="card-title">Lassonde Events</h5>
+                <p className="card-text">
+                  Check out the latest events happening at Lassonde School of
+                  Engineering.
+                </p>
+              </div>
+              <div className="card-footer">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => toggleModal("lassonde")}
+                >
+                  Lassonde Events
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* York Card */}
-        <div className="col">
-          <div className="card h-100">
-            <img src="..." className="card-img-top" alt="York Events" />
-            <div className="card-body">
-              <h5 className="card-title">York Events</h5>
-              <p className="card-text">
-                Explore the upcoming events across York University.
-              </p>
+          {/* Bethune Card */}
+          <div className="col">
+            <div className="card h-100">
+              <div className="card-body">
+                <h5 className="card-title">Bethune Events</h5>
+                <p className="card-text">
+                  Discover what's going on at Bethune College this week.
+                </p>
+              </div>
+              <div className="card-footer">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => toggleModal("bethune")}
+                >
+                  Bethune Events
+                </button>
+              </div>
             </div>
-            <div className="card-footer">
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => toggleModal("york")}
-              >
-                View Events
-              </button>
+          </div>
+
+          {/* York Card */}
+          <div className="col">
+            <div className="card h-100">
+              <div className="card-body">
+                <h5 className="card-title">York Events</h5>
+                <p className="card-text">
+                  Explore the upcoming events across York University.
+                </p>
+              </div>
+              <div className="card-footer">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => toggleModal("york")}
+                >
+                  York Events
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Render Modal for Active Card */}
-      {activeModal && renderModal(activeModal)}
+      {activeModal && renderModal(emailJson)}
     </>
   );
 }
