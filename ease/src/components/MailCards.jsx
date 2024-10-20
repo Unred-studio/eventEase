@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 function MailCards({ onDone }) {
   //Using state to store the events user is intersted
@@ -47,7 +46,8 @@ function MailCards({ onDone }) {
 
 
   const handleDoneClick = () => {
-    onDone(selectedEvents);
+    onDone(selectedEvents, emailJson);
+    toggleModal(null);
   };
 
 

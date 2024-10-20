@@ -4,12 +4,15 @@ import Timetable from "./components/timetable";
 
 function App() {
   const [selectedEvents, setSelectedEvents] = useState([]);
+  const [emailJson, setEmailJson] = useState({});
   const [showTimeTable, setShowTimeTable] = useState(false);
 
-  const handleDoneButtonClick = (eventArr) => {
+  const handleDoneButtonClick = (eventArr, emailJson) => {
     setSelectedEvents(eventArr);
+    setEmailJson(emailJson);
     setShowTimeTable(true);
   };
+
 
   return (
     <div>
@@ -17,7 +20,7 @@ function App() {
       {!showTimeTable && <MailCard onDone={handleDoneButtonClick} />}
 
       {/* Show Timetable component when "Done" is clicked */}
-      {showTimeTable && <Timetable events={selectedEvents} />}
+      {showTimeTable && <Timetable eventsIdArr={selectedEvents} emailData={emailJson} />}
     </div>
   );
 }

@@ -1,10 +1,13 @@
-function Timetable( {events} ) {
+function Timetable( {eventsIdArr, emailData} ) {
+
+  console.log(eventsIdArr)
+
   return (
   <div>
     <h1>Time Table</h1>
     <ul>
-      {events.map((event) => (
-        <li key={event}>{event}</li>
+      {eventsIdArr.map((eventId) => (
+        <li key={eventId}>{emailData.events[eventId].name}</li>
       ))}
     </ul>
   </div>
