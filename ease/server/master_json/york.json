@@ -1,321 +1,286 @@
 {
   "sender": "york",
-  "edition": "8oct",
+  "edition": "Oct15-Oct22",
   "events": [
     {
       "id": 1,
       "name": "Women’s History Month",
-      "summary": "Celebrate women's history",
+      "summary": "Dedicate some time to educating yourself on the accomplishments of women throughout Canada’s history and the wider world this Women’s History Month.",
       "date": null,
       "time": null,
-      "location": null,
-      "selected": false
+      "location": null
     },
     {
       "id": 2,
       "name": "Academic Integrity Month",
-      "summary": "Learn about academic integrity",
+      "summary": "Take part in workshops and activities built to help you enhance your understanding of academic integrity at York. Find out how to navigate an evolving academic landscape and get the chance to participate in an exciting meme making contest. Virtual and in-person events.",
       "date": null,
       "time": null,
-      "location": "Virtual and in-person events",
-      "selected": false
+      "location": "Virtual and in-person events"
     },
     {
       "id": 3,
       "name": "BioBlitz",
-      "summary": "Explore campus flora",
+      "summary": "Explore the thriving flora on campus using the iNaturalist app! Catalogue and geotag plants, animals and insects all around York’s grounds while participating in one of three nature walks. Participate for the chance to win a $50 YU-card prize!",
       "date": null,
       "time": null,
-      "location": "Keele and Glendon Campus",
-      "selected": false
+      "location": "Keele and Glendon Campus"
     },
     {
       "id": 4,
       "name": "York’s Sustainability Race",
-      "summary": "Complete sustainability challenges",
+      "summary": "Take part in York’s Sustainability Race by completing 30 different digital sustainability challenges.",
       "date": null,
       "time": null,
-      "location": "Keele, Glendon and Markham Campus",
-      "selected": false
+      "location": "Keele, Glendon and Markham Campus"
     },
     {
       "id": 5,
-      "name": "Fall Well-being Week",
-      "summary": "Prioritize your well-being",
-      "date": null,
+      "name": "Prioritize your Health and Well-being",
+      "summary": "Engage in activities during Fall Well-being Week that will help you embrace all dimensions of well-being. Explore free events held both in-person and online by visiting the Well-being web page.",
+      "date": "2024-10-21",
       "time": "12:00 AM - 11:59 PM",
-      "location": "Online and in-person",
-      "selected": false
+      "location": "Online and in-person"
     },
     {
       "id": 6,
       "name": "Experience Grad York – Fall 2024",
-      "summary": "Discover graduate programs",
+      "summary": "Discover York’s various graduate programs and diplomas in this four-day event! Find out more about what graduate program is right for you, the application process, fees and how to advance your academic career.",
       "date": null,
       "time": null,
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 7,
-      "name": "Volunteer Opportunity: Fall Open House 2024",
-      "summary": "Welcome future students",
+      "name": "Fall Open House 2024",
+      "summary": "Are you interested in welcoming future students to campus and sharing your insights with them? Join us for Fall Open House to take part in making connections and spending the day engaging in exciting activities. Participants will receive an honorarium and piece of York branded clothing as a token of appreciation.",
       "date": "2024-11-02",
       "time": "08:00 AM - 02:30 PM",
-      "location": "Keele Campus",
-      "selected": false
+      "location": "Keele Campus"
     },
     {
       "id": 8,
       "name": "Pop-up Advising Fair",
-      "summary": "Get advising answers",
+      "summary": "Stop by to get answers to your questions about OSAP, degree requirements, study permits, career pathways, getting into Law School or Graduate Studies and more by connecting with advising experts.",
       "date": "2024-10-23",
       "time": "10:00 AM - 03:00 PM",
-      "location": "Keele and Glendon Campus",
-      "selected": false
+      "location": "Keele and Glendon Campus"
     },
     {
       "id": 9,
       "name": "Positive Psychology & Career Well-being Webinar",
-      "summary": "Improve work-life balance",
+      "summary": "Infuse positive psychology techniques into your daily life to make your work-life balance stable.",
       "date": "2024-10-16",
       "time": "02:00 PM - 03:30 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 10,
       "name": "BMO Interviews 101",
-      "summary": "Practice interviewing skills",
+      "summary": "Practice your interviewing skills with recruiters and prepare yourself for incoming job offers.",
       "date": "2024-10-18",
       "time": "12:00 PM - 01:00 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 11,
       "name": "How to Make Career Decisions Webinar",
-      "summary": "Learn decision-making practices",
+      "summary": "Be better informed with your decision making and learn essential practices for moving forward in your employment.",
       "date": "2024-10-21",
       "time": "10:00 AM - 11:30 AM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 12,
       "name": "Resumé Writing Webinar",
-      "summary": "Craft an effective resumé",
+      "summary": "Craft an effective resumé and secure your next job by presenting your job experience in a compelling way.",
       "date": "2024-10-22",
       "time": "10:00 AM - 11:30 AM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 13,
       "name": "Cover Letter Writing Webinar",
-      "summary": "Write a compelling cover letter",
+      "summary": "Make your first impression a good one by effectively targeting your cover letter with relevant skills and experiences.",
       "date": "2024-10-22",
       "time": "11:45 AM - 12:30 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 14,
       "name": "Zotero Introduction: Easier Citations and Research Management",
-      "summary": "Learn research management",
+      "summary": "Learn how to manage your research and sources with this open-source tool.",
       "date": "2024-10-22",
       "time": "12:00 PM - 01:00 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 15,
       "name": "Academic Integrity: Learn to Stop Worrying About It!",
-      "summary": "Understand academic integrity",
+      "summary": "What exactly is academic integrity? Explore how to demonstrate integrity principles in all your courses.",
       "date": "2024-10-22",
       "time": "02:00 PM - 03:30 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 16,
       "name": "Understanding and Creating Data Visualizations",
-      "summary": "Create data visualizations",
+      "summary": "Create data visualizations for the academic and professional world with tips on how to find data, crafting a visual narrative and more.",
       "date": "2024-10-22",
       "time": "02:00 PM - 03:30 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 17,
       "name": "Citations 101 for Mature Students",
-      "summary": "Learn citation styles",
+      "summary": "Accurately cite your sources using several citations styles used at York.",
       "date": "2024-10-17",
       "time": "12:30 PM - 01:30 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 18,
       "name": "Mindfulness & Stress Relief with SCHW",
-      "summary": "Manage stress with mindfulness",
+      "summary": "There are a lot of stress busters and relaxation techniques out there, but how do you actively maintain and enhance your mental well-being? Find out how to integrate mindfulness into your daily routine to better manage your stress.",
       "date": "2024-10-22",
       "time": "02:30 PM - 03:30 PM",
-      "location": "N110 Bennett Centre for Student Success, Keele Campus",
-      "selected": false
+      "location": "N110 Bennett Centre for Student Success, Keele Campus"
     },
     {
       "id": 19,
       "name": "Coffee Break",
-      "summary": "Connect with international students",
+      "summary": "Take a break from your studies and relax with coffee and snacks while mingling with fellow international students.",
       "date": "2024-10-16",
       "time": "01:00 PM - 03:00 PM",
-      "location": "280N York Lanes, Keele Campus",
-      "selected": false
+      "location": "280N York Lanes, Keele Campus"
     },
     {
       "id": 20,
       "name": "Virtual UHIP Drop-in Session",
-      "summary": "Learn about UHIP",
+      "summary": "Find out all you need to know about the University Health Insurance Plan (UHIP) to be prepared for any medical needs or emergencies.",
       "date": "2024-10-16",
       "time": "02:00 PM - 04:00 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 21,
       "name": "GPP: October Drop-in",
-      "summary": "Connect with peer mentors",
+      "summary": "A peer mentor can be instrumental for getting integrated into university life. Attend this drop-in session to connect with upper-year international students.",
       "date": "2024-10-17",
       "time": "09:00 AM - 10:00 AM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 22,
       "name": "Immigration Info Session/Workroom: Study Permit Extension + PGWP",
-      "summary": "Learn about study permit extension",
+      "summary": "Looking to live or work in Canada long term? Extend your stay by way of a study permit or Post-Graduate Work Permit (PGWP).",
       "date": "2024-10-18",
       "time": "01:00 PM - 02:15 PM",
-      "location": "242 York Lanes, Keele Campus",
-      "selected": false
+      "location": "242 York Lanes, Keele Campus"
     },
     {
       "id": 23,
       "name": "CGS-Master’s and OGS Application Workshop",
-      "summary": "Apply for scholarships",
+      "summary": "Find out about the application process for the Canada Graduate Scholarships – Master’s (CGSM), including how to adequately prepare your proposal.",
       "date": "2024-10-22",
       "time": "09:30 AM - 11:30 AM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 24,
       "name": "Nihtaawalohkeew: do one’s work correctly",
-      "summary": "Learn about Indigenous research",
+      "summary": "When working with Indigenous peoples for scholarly and research purposes, it is important to accurately represent and cite their words. Decolonize your understanding of intellectual property rights and learn how to work with Indigenous communities for your research.",
       "date": "2024-10-22",
       "time": "11:00 AM - 12:30 PM",
-      "location": "519 Kaneff Tower, Keele Campus",
-      "selected": false
+      "location": "519 Kaneff Tower, Keele Campus"
     },
     {
       "id": 25,
       "name": "Mindful Monday",
-      "summary": "Relax with mindfulness",
+      "summary": "Relax and destress with some simple mindfulness exercises to put yourself at ease.",
       "date": "2024-10-21",
       "time": "01:00 PM - 02:00 PM",
-      "location": "Wellness Studio, Markham Campus",
-      "selected": false
+      "location": "Wellness Studio, Markham Campus"
     },
     {
       "id": 26,
       "name": "Virtual Speed Friending: Fostering Social Well-being",
-      "summary": "Make new connections",
+      "summary": "Your social well-being is an important part of your overall mental health. Stretch your social skills and make connections with others during this exciting event.",
       "date": "2024-10-21",
       "time": "02:30 PM - 03:30 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 27,
       "name": "The Emotionally Intelligent Leader",
-      "summary": "Learn emotional intelligence",
+      "summary": "Join Black Excellence at York University (BE YU) and learn how to empathize, respect your team and create a safe working environment for a diverse range of people.",
       "date": "2024-10-22",
       "time": "12:00 PM - 01:00 PM",
-      "location": "Online",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 28,
       "name": "Smoothies On-the-Go",
-      "summary": "Make healthy smoothies",
+      "summary": "Elevate your breakfast routine with this how-to-session on crafting quick and nutritious smoothies to accommodate your fast paced lifestyle.",
       "date": "2024-10-22",
       "time": "01:00 PM - 02:30 PM",
-      "location": "1015 Markham Student Life Room, Markham Campus",
-      "selected": false
+      "location": "1015 Markham Student Life Room, Markham Campus"
     },
     {
       "id": 29,
       "name": "Exploring Black Men’s Mental Health Challenges",
-      "summary": "Address mental health challenges",
+      "summary": "Address the mental health challenges Black men face while navigating day to day life in this workshop led Black Excellence at York University (BE YU).",
       "date": "2024-10-22",
       "time": "02:00 PM - 04:00 PM",
-      "location": "248 Health, Nursing & Environmental Studies Building, Keele Campus",
-      "selected": false
+      "location": "248 Health, Nursing & Environmental Studies Building, Keele Campus"
     },
     {
       "id": 30,
       "name": "Food Services Teaching Kitchen",
-      "summary": "Make healthy energy bites",
+      "summary": "Take the first step towards healthy eating and make delicious no-bake energy bites with fair trade ingredients.",
       "date": "2024-10-23",
       "time": "02:00 PM - 03:00 PM",
-      "location": "Glendon Dining Hall, Glendon Campus",
-      "selected": false
+      "location": "Glendon Dining Hall, Glendon Campus"
     },
     {
       "id": 31,
       "name": "Drop-in Recreational Programming, Group Classes & Seminars",
-      "summary": "Maintain physical health",
-      "date": null,
+      "summary": "Looking to get yourself in gear? Maintain your physical health by attending drop-in recreation programs, seminars and classes offered by Athletics and Recreation.",
+      "date": "2024-10-21",
       "time": null,
-      "location": "Markham and Keele Campus",
-      "selected": false
+      "location": "Markham and Keele Campus"
     },
     {
       "id": 32,
       "name": "Global Learning Drop-in Advising",
-      "summary": "Learn about study abroad",
+      "summary": "Find out everything there is to know about York’s various study abroad options and start planning your international education.",
       "date": "2024-10-16",
       "time": "01:00 PM - 03:30 PM",
-      "location": "200 York Lanes, Keele Campus",
-      "selected": false
+      "location": "200 York Lanes, Keele Campus"
     },
     {
       "id": 33,
       "name": "Neighbourhood Exploration",
-      "summary": "Explore Yorkville district",
+      "summary": "Have you been wanting to explore Toronto but don’t know where to start? Join this neighbourhood exploration tour to discover the beautiful Yorkville district!",
       "date": "2024-10-21",
       "time": "01:00 PM - 05:00 PM",
-      "location": "York University Subway Station, Keele Campus & Toronto",
-      "selected": false
+      "location": "York University Subway Station, Keele Campus & Toronto"
     },
     {
       "id": 34,
       "name": "Moccasin Identifier: Learn about the Land Through Art Workshop",
-      "summary": "Learn about Indigenous land",
+      "summary": "Uncover the history of the traditional Indigenous land you attend university on through this art workshop about traditional footwear and land-based art.",
       "date": "2024-10-21",
       "time": "02:30 PM - 05:00 PM",
-      "location": "Indigenous Circle on 2nd Floor, Markham Campus",
-      "selected": false
+      "location": "Indigenous Circle on 2nd Floor, Markham Campus"
     },
     {
       "id": 35,
       "name": "The Filipino Diaspora in Canada: Celebrating Successes and Addressing Persistent Challenges",
-      "summary": "Celebrate Filipino diaspora",
+      "summary": "Join this event celebrating the 75th anniversary of the diplomatic relations between the Philippines and Canada. Learn from a panel of distinguished Filipino Canadians as they share their journeys towards professional leadership across various fields, and what Filipino identity means in the Canadian context.",
       "date": "2024-10-28",
       "time": "06:30 PM - 09:30 PM",
-      "location": "Tribute Communities Recital Hall and CIBC Lobby, Keele Campus",
-      "selected": false
+      "location": "Tribute Communities Recital Hall and CIBC Lobby, Keele Campus"
     }
   ]
 }

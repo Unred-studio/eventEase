@@ -42,14 +42,12 @@ function MailCards({ onDone }) {
   const handleModalClose = () => {
     setSelectedEvents([]);
     toggleModal(null);
-  }
-
+  };
 
   const handleDoneClick = () => {
     onDone(selectedEvents, emailJson);
     toggleModal(null);
   };
-
 
   // Render modal for each email type
   const renderModal = (emailJson) => {
@@ -71,14 +69,15 @@ function MailCards({ onDone }) {
                   emailJson.sender.charAt(0).toUpperCase() +
                     emailJson.sender.slice(1)}{" "}
                 Events:{" "}
-                {emailJson.edition && (
-                  <>
-                    {emailJson.edition.charAt(0)}
-                    <sup>th </sup>
-                    {" " +emailJson.edition.slice(1).charAt(0).toUpperCase() +
-                      emailJson.edition.slice(2)}
-                  </>
-                )}
+                {emailJson.edition &&
+                  emailJson.edition
+                    .split("-")
+                    .map((part, index) =>
+                      index === 0
+                        ? part.charAt(0).toUpperCase() + part.slice(1) 
+                        : part
+                    )
+                    .join(" to ")}
               </h1>
               <button
                 type="button"
@@ -164,7 +163,6 @@ function MailCards({ onDone }) {
                 type="button"
                 className="btn btn-secondary"
                 onClick={handleModalClose}
-
               >
                 Close
               </button>

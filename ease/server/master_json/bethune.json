@@ -1,87 +1,182 @@
 {
   "sender": "bethune",
-  "edition": "oct14-oct18",
+  "edition": "Oct21-Oct25",
   "events": [
     {
       "id": 1,
-      "name": "COFFEE WITH PROFS RESEARCH OPPORTUNITIES IN ENG AND COMP SCIE",
-      "summary": "Coffee with Profs Research Opportunities",
-      "date": null,
+      "name": "Resume & Cover Letter Writing",
+      "summary": "Join the career center for a workshop on resume and cover letter writing.",
+      "date": "2024-10-23",
       "time": null,
-      "location": null,
-      "selected": false
+      "location": "Career Centre @ Bethune College"
     },
     {
       "id": 2,
-      "name": "YORK INTERNATIONAL GO GLOBAL INFORMATION SESSION @ BETHUNE COLLEGE",
-      "summary": "York International Go Global Info Session",
-      "date": "2024-10-28",
+      "name": "SOS Seminar",
+      "summary": "Join the SOS Peer Mentor program for a Wednesday workshop.",
+      "date": "2024-10-23",
       "time": null,
-      "location": "Bethune College",
-      "selected": false
+      "location": "BC203"
     },
     {
       "id": 3,
-      "name": "LEARNING SKILLS @ BETHUNE Study Strategies that WORK!",
-      "summary": "Learning Skills Study Strategies",
-      "date": "2024-10-30",
-      "time": "02:30 PM - 03:30 PM",
-      "location": "Room BC 203",
-      "selected": false
+      "name": "SOS Stress Buster",
+      "summary": "Join the SOS socials for a stress buster event.",
+      "date": "2024-10-22",
+      "time": null,
+      "location": "Online"
     },
     {
       "id": 4,
-      "name": "RESUME & COVER LETTER WRITING",
-      "summary": "Resume & Cover Letter Writing",
-      "date": "2024-10-23",
+      "name": "York International Go Global Information Session",
+      "summary": "Learn about internationalizing your degree and IBSc programs.",
+      "date": "2024-10-28",
       "time": null,
-      "location": "Bethune College",
-      "selected": false
+      "location": "Bethune College"
     },
     {
       "id": 5,
-      "name": "FALL FOOD DRIVE",
-      "summary": "Bethune College Food Drive",
-      "date": "2024-10-07",
-      "time": null,
-      "location": "BCC office or Peer Mentor office (BC 122 or BC 208)",
-      "selected": false
+      "name": "Study Strategies that WORK!",
+      "summary": "Learning Skills presents a workshop on effective study strategies.",
+      "date": "2024-10-30",
+      "time": "02:30 PM - 03:30 PM",
+      "location": "Room BC 203"
     },
     {
       "id": 6,
-      "name": "LOCKER RENTALS ARE AVAILABLE",
-      "summary": "Locker Rentals Available",
+      "name": "Coffee with Profs Research Opportunities in ENG and COMP SCIE",
+      "summary": "Learn about research opportunities in English and Computer Science.",
       "date": null,
       "time": null,
-      "location": "Office of the College Head (BC207)",
-      "selected": false
+      "location": "Online"
     },
     {
       "id": 7,
-      "name": "Counselling Office Drop-in Hours",
-      "summary": "Counselling Office Drop-in Hours",
-      "date": "2024-10-15",
+      "name": "Fall Food Drive",
+      "summary": "Bethune College Council is organizing a food drive in partnership with the Food Bank of York Region.",
+      "date": null,
       "time": null,
-      "location": null,
-      "selected": false
+      "location": "BCC office or Peer Mentor office (BC 122 or BC 208)"
     },
     {
       "id": 8,
-      "name": "2SLGBTQIA+ Support Group",
-      "summary": "2SLGBTQIA+ Support Group",
-      "date": "2024-10-29",
-      "time": "03:00 PM - 04:00 PM",
-      "location": "Student Counselling, Health & Well-Being (SCHW)",
-      "selected": false
+      "name": "PASS (Peer Assisted Study Sessions) and Peer Tutoring",
+      "summary": "Get free help with course material, meet new friends, and collaborate.",
+      "date": null,
+      "time": null,
+      "location": null
     },
     {
       "id": 9,
-      "name": "UHACK 2024",
-      "summary": "UNHack 2024 Sustainability Challenge",
-      "date": "2024-11-15",
+      "name": "Locker Rentals",
+      "summary": "Rent a locker for the Fall/Winter terms from the Office of the College Head.",
+      "date": null,
       "time": null,
-      "location": "Bergeron Centre",
-      "selected": false
+      "location": "Office of the College Head (BC207)"
+    },
+    {
+      "id": 10,
+      "name": "Kinesiology (KINE) Research Expo",
+      "summary": "Discover research in various areas of Kinesiology and hear from professors.",
+      "date": "2024-10-30",
+      "time": "05:00 PM - 07:00 PM",
+      "location": null
+    },
+    {
+      "id": 11,
+      "name": "Med School: Tips on how to get accepted and succeed",
+      "summary": "Hear from alumni about their experiences in medical school.",
+      "date": "2024-10-22",
+      "time": "05:00 PM - 06:00 PM",
+      "location": "Zoom meeting"
+    },
+    {
+      "id": 12,
+      "name": "Fall 2024 Well-being Week",
+      "summary": "Explore and register for Fall Well-being events.",
+      "date": "2024-10-21",
+      "time": null,
+      "location": "Online"
+    },
+    {
+      "id": 13,
+      "name": "2SLGBTQIA+ Support Group",
+      "summary": "Meet, share stories, and connect with peers in a confidential space.",
+      "date": "2024-10-29",
+      "time": "03:00 PM - 04:00 PM",
+      "location": "Student Counselling, Health & Well-Being (SCHW)"
+    },
+    {
+      "id": 14,
+      "name": "Learning Skills Workshops",
+      "summary": "Learning Skills offers online and in-person workshops to help you learn all the skills you need to achieve your academic goals.",
+      "date": null,
+      "time": null,
+      "location": "Online and in-person"
+    },
+    {
+      "id": 15,
+      "name": "Time Management",
+      "summary": "Workshop on Time Management.",
+      "date": "2024-10-21",
+      "time": "02:00 PM - 03:00 PM",
+      "location": "Learning Skills Services"
+    },
+    {
+      "id": 16,
+      "name": "Tests, Midterms, Exams, Oh My!",
+      "summary": "Workshop on Tests, Midterms, and Exams.",
+      "date": "2024-10-22",
+      "time": "10:00 AM - 11:00 AM",
+      "location": "Learning Skills Services"
+    },
+    {
+      "id": 17,
+      "name": "Graduate Student Certificate in Personal Wellness and Learning Skills",
+      "summary": "Workshop on Personal Wellness and Learning Skills for Graduate Students.",
+      "date": "2024-10-22",
+      "time": "01:00 PM - 03:00 PM",
+      "location": "Learning Skills Services"
+    },
+    {
+      "id": 18,
+      "name": "Note-Taking Essentials",
+      "summary": "Workshop on Note-Taking Essentials.",
+      "date": "2024-10-23",
+      "time": "10:00 AM - 11:00 AM",
+      "location": "Learning Skills Services"
+    },
+    {
+      "id": 19,
+      "name": "Learning Skills Services @ Pop-Up Advising Fair",
+      "summary": "Learning Skills Services at Pop-Up Advising Fair.",
+      "date": "2024-10-23",
+      "time": "10:00 AM - 03:00 PM",
+      "location": null
+    },
+    {
+      "id": 20,
+      "name": "Motivation & Procrastination",
+      "summary": "Workshop on Motivation and Procrastination.",
+      "date": "2024-10-23",
+      "time": "11:00 AM - 12:00 PM",
+      "location": "Learning Skills Services + CISS"
+    },
+    {
+      "id": 21,
+      "name": "Critical Thinking",
+      "summary": "Workshop on Critical Thinking.",
+      "date": "2024-10-24",
+      "time": "09:30 AM - 10:30 AM",
+      "location": "Learning Skills Services"
+    },
+    {
+      "id": 22,
+      "name": "Career Centre Events",
+      "summary": "The Career Centre is here to help with jobs and future career.",
+      "date": null,
+      "time": null,
+      "location": "Online"
     }
   ]
 }
