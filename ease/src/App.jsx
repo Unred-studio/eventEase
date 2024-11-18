@@ -1,11 +1,12 @@
 import { useState } from "react";
 import MailCard from "./components/MailCards";
-import Timetable from "./components/timetable";
+import Timetable from "./components/Timetable";
 
 function App() {
-  const [selectedEvents, setSelectedEvents] = useState([]);
-  const [emailJson, setEmailJson] = useState({});
+  const [selectedEvents, setSelectedEvents] = useState([]); //Array of user selected events
+  const [emailJson, setEmailJson] = useState({}); //
   const [showTimeTable, setShowTimeTable] = useState(false);
+
 
   const handleDoneButtonClick = (eventArr, emailJson) => {
     setSelectedEvents(eventArr);

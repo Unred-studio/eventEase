@@ -1,22 +1,22 @@
 {
   "sender": "lassonde",
-  "edition": "Oct21-Oct25",
+  "edition": "Oct28-Nov01",
   "events": [
     {
       "id": 1,
-      "name": "Space Robotics Competition",
-      "summary": "Compete to complete tasks using the NED2 robot for a chance to win a $100 gift card!",
-      "date": "2024-10-22",
-      "time": "02:00 PM - 05:00 PM",
-      "location": "315 Petrie Science & Engineering Building"
+      "name": "Space Engineering Gateway: Space Robotics Competition II",
+      "summary": "A space robotics competition for first-year engineering students to complete tasks using the NED2 robot. The winner will receive a $100 gift card.",
+      "date": "2024-10-29",
+      "time": "11:00 AM - 02:00 PM",
+      "location": "MK 5000, Markham Campus"
     },
     {
       "id": 2,
-      "name": "Re-shoring and Re-Tooling: The Semiconductor Industry’s Challenge to Academia",
-      "summary": "An afternoon event to celebrate the importance of the semiconductor sector to Canada’s economy. Join our experts for presentations, a panel, and lab tours!",
-      "date": "2024-11-05",
-      "time": "02:00 PM - 05:00 PM",
-      "location": null
+      "name": "Becoming Civil",
+      "summary": "Learn about the Civil Engineering program, meet students and faculty, and enjoy pizza and drinks.",
+      "date": "2024-10-29",
+      "time": "01:30 PM - 02:30 PM",
+      "location": "313 Bergeron Centre"
     },
     {
       "id": 3,
@@ -24,175 +24,119 @@
       "summary": "A collaborative problem-solving experience where students tackle real-world challenges, fostering creativity, teamwork, and entrepreneurial thinking to develop innovative solutions for sustainability and social impact.",
       "date": "2024-11-15",
       "time": null,
-      "location": null
+      "location": "Bergeron Centre (in-person event)"
     },
     {
       "id": 4,
-      "name": "Annual Canadian Celebration of Women in Computing Conference (CAN-CWiC)",
-      "summary": "The premier event for young women and non-binary individuals in technology. This conference has provided opportunities for networking, learning, and mentoring.",
-      "date": "2024-10-25",
+      "name": "Google Cloud Credits for Startups",
+      "summary": "The BEST Program and Google Cloud are offering $25K in cloud credits to help early-stage startups develop and scale.",
+      "date": null,
       "time": null,
-      "location": "York University"
+      "location": "Online"
     },
     {
       "id": 5,
-      "name": "Climathon 2024",
-      "summary": "Calling experts, changemakers, developers, designers, strategists, social innovators and students to hack climate solutions for the Greater Toronto Area (GTA)! This weekend event engages participants from diverse backgrounds to contribute to climate action by creating impactful solutions.",
-      "date": "2024-10-25",
+      "name": "ONWiE's Virtual Summit \"Engineering Diversity: Evaluating Effective Outreach\"",
+      "summary": "An engaging afternoon of learning on how to effectively capture and communicate the impact of outreach initiatives.",
+      "date": "2024-11-21",
       "time": null,
-      "location": null
+      "location": "Online"
     },
     {
       "id": 6,
+      "name": "Marc Garneau in Conversation",
+      "summary": "Join Marc Garneau, Canada's first man in space, as he discusses his new memoir \"A Most Extraordinary Ride: Space, Politics and the Pursuit of a Canadian Dream.\"",
+      "date": "2024-10-30",
+      "time": "07:00 PM",
+      "location": "Indigo, Manulife Centre, 55 Bloor St. W. Toronto, Ontario"
+    },
+    {
+      "id": 7,
       "name": "Lassonde Engineering Society Fall Semi-Annual General Meeting",
       "summary": "Get to know the Lassonde Engineering Society, provide feedback, see constitutional changes, custom merch, free food and more!",
       "date": "2024-10-30",
       "time": "06:00 PM",
-      "location": null
-    },
-    {
-      "id": 7,
-      "name": "Co-op & Internship Information Session",
-      "summary": "Co-op is an optional program for students to gain paid, hands-on learning and industry experience. If you meet the academic eligibility requirements, be sure to take advantage of this fantastic work-integrated learning opportunity.",
-      "date": "2024-10-24",
-      "time": "02:00 PM - 03:30 PM",
-      "location": null
+      "location": "Online"
     },
     {
       "id": 8,
-      "name": "Interview fundamentals workshop",
-      "summary": null,
-      "date": "2024-10-24",
-      "time": "11:00 AM - 12:00 PM",
-      "location": null
+      "name": "Research Study on Entrepreneurship Education",
+      "summary": "Participate in a research study aimed at understanding the impact of entrepreneurship education on fostering an entrepreneurial mindset and intentions among students.",
+      "date": null,
+      "time": null,
+      "location": "Online"
     },
     {
       "id": 9,
-      "name": "Drop-in Advising with Career Peer Educators",
-      "summary": "Whether you need feedback on your resumé, preparing for interviews or navigating job postings, our Career Peer Educators are available at the Career Lounge to help you!",
-      "date": null,
-      "time": null,
-      "location": "202 McLaughlin College and in York Lanes, or virtually through Experience York"
+      "name": "In the Field with Public Services and Procurement Canada for Students with Disabilities",
+      "summary": "A career event for students with disabilities.",
+      "date": "2024-10-30",
+      "time": "09:30 AM - 01:30 PM",
+      "location": "Online"
     },
     {
       "id": 10,
-      "name": "Bergeron Front Desk In-person & Virtual Drop-ins",
-      "summary": null,
-      "date": null,
-      "time": "02:00 PM - 04:00 PM",
-      "location": "Bergeron Front Desk"
-    },
-    {
-      "id": 11,
-      "name": "Career Centre Strategies for Whiteboard Interview Success – For Lassonde School of Engineering Students",
-      "summary": null,
-      "date": null,
-      "time": "02:00 PM - 03:30 PM",
-      "location": null
-    },
-    {
-      "id": 12,
-      "name": "Discover BMO: Corporate Areas",
-      "summary": null,
-      "date": "2024-10-22",
-      "time": "05:00 PM - 06:00 PM",
-      "location": null
-    },
-    {
-      "id": 13,
-      "name": "Launch Your Future at Bell",
-      "summary": null,
-      "date": "2024-10-24",
-      "time": "12:00 PM - 01:30 PM",
-      "location": null
-    },
-    {
-      "id": 14,
-      "name": "AC Workshop Series: Co-op & Job Opportunity Workshop",
-      "summary": null,
-      "date": "2024-10-24",
-      "time": "03:00 PM - 04:00 PM",
-      "location": null
-    },
-    {
-      "id": 15,
-      "name": "In the Field with Public Services and Procurement Canada for Students with Disabilities",
-      "summary": null,
-      "date": "2024-10-30",
-      "time": "09:30 AM - 01:30 PM",
-      "location": null
-    },
-    {
-      "id": 16,
-      "name": "Drop-in chat with Assistant Dean, Students, Mitch Burnie",
-      "summary": null,
-      "date": "2024-10-21",
+      "name": "BMO Builds a Resume",
+      "summary": "A workshop on resume building.",
+      "date": "2024-11-01",
       "time": "12:00 PM - 01:00 PM",
       "location": "Online"
     },
     {
-      "id": 17,
+      "id": 11,
+      "name": "Women in Pharma - Insights from Sanofi Professionals",
+      "summary": "A panel discussion with professionals from Sanofi.",
+      "date": "2024-11-05",
+      "time": "05:00 PM - 06:00 PM",
+      "location": "Online"
+    },
+    {
+      "id": 12,
       "name": "Lassonde Run Club",
-      "summary": null,
-      "date": "2024-10-22",
+      "summary": "A running club for Lassonde students.",
+      "date": "2024-10-29",
       "time": "12:00 PM - 01:00 PM",
       "location": "Bergeron Centre Lobby"
     },
     {
-      "id": 18,
+      "id": 13,
       "name": "Drop-In Yoga",
-      "summary": null,
-      "date": "2024-10-22",
+      "summary": "A drop-in yoga session for Lassonde students.",
+      "date": "2024-10-29",
       "time": "12:00 PM - 01:00 PM",
       "location": "Bergeron Centre, Room 203"
     },
     {
-      "id": 19,
+      "id": 14,
       "name": "Co-op Job Search Appointments",
-      "summary": null,
-      "date": "2024-10-22",
+      "summary": "Appointments for co-op job search assistance.",
+      "date": "2024-10-29",
       "time": "01:30 PM - 02:30 PM",
-      "location": null
+      "location": "Online"
     },
     {
-      "id": 20,
+      "id": 15,
+      "name": "Interactive Skills Building Session: Water and Wastewater Club presented by Water Resources Society of York",
+      "summary": "A skills building session for the Water and Wastewater Club.",
+      "date": "2024-10-29",
+      "time": "04:00 PM - 06:00 PM",
+      "location": "Online"
+    },
+    {
+      "id": 16,
       "name": "Career Centre: Bergeron Front Desk In-person & Virtual Drop-ins",
-      "summary": null,
-      "date": "2024-10-23",
+      "summary": "Drop-in advising with Career Peer Educators.",
+      "date": "2024-10-30",
       "time": "02:00 PM - 04:00 PM",
       "location": "Bergeron Front Desk"
     },
     {
-      "id": 21,
-      "name": "Co-op & Internship Information Session",
-      "summary": null,
-      "date": "2024-10-24",
-      "time": "02:00 PM - 03:30 PM",
-      "location": null
-    },
-    {
-      "id": 22,
-      "name": "Interview Fundamentals Workshop",
-      "summary": null,
-      "date": "2024-10-24",
-      "time": "11:00 AM - 12:00 PM",
-      "location": null
-    },
-    {
-      "id": 23,
-      "name": "Launch your Career with BEST",
-      "summary": null,
-      "date": "2024-10-24",
-      "time": "01:30 PM - 02:30 PM",
-      "location": "217 Bergeron Centre"
-    },
-    {
-      "id": 24,
-      "name": "Canadian Celebration of Women in Computing Conference (CAN-CWiC)",
-      "summary": null,
-      "date": "2024-10-25",
-      "time": null,
-      "location": null
+      "id": 17,
+      "name": "Drop-in chat with Assistant Dean, Students, Mitch Burnie",
+      "summary": "A drop-in chat with Assistant Dean, Students, Mitch Burnie.",
+      "date": "2024-10-28",
+      "time": "12:00 PM - 01:00 PM",
+      "location": "Online"
     }
   ]
 }

@@ -90,8 +90,8 @@ function Timetable({ eventsIdArr, emailData }) {
           renderEvents.map((event) => (
             <div className="col-lg-4 col-md-6 mb-4" key={event.id}>
               <div className="single-schedules-inner shadow p-3 h-100 d-flex flex-column">
-                <div className="date">{event.time || "Time Not Detected"}</div>
-                <div className="location">{event.location || "Location Not Detected"}</div>
+                <div className="date">{event.time || "No specific time mentioned"}</div>
+                <div className="location">{event.location || "Location details not provided"}</div>
                 <h5>{event.name}</h5>
                 <p>{event.summary}</p>
 
@@ -133,9 +133,9 @@ function Timetable({ eventsIdArr, emailData }) {
           outOfRangeEvents.map((event) => (
             <div className="col-lg-4 col-md-6 mb-4" key={event.id}>
               <div className="single-schedules-inner shadow p-3 h-100 d-flex flex-column">
-                <div className="date">{event.time || "Time Not Detected"}</div>
-                <div className="location">{event.location || "Location Not Detected"}</div>
-                <div className="date">{event.date || "Date Not Detected"}</div>
+                <div className="date">{event.time || "No specific time mentioned"}</div>
+                <div className="location">{event.location || "Location details not provided"}</div>
+                <div className="date">{(dayjs(event.date).format("ddd, MMM DD") != "Invalid Date" && dayjs(event.date).format("ddd, MMM DD")) || "No date provided"}</div>
                 <h5>{event.name}</h5>
                 <p>{event.summary}</p>
 
