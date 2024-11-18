@@ -1,13 +1,17 @@
+//Imports 
 import { useState } from "react";
 import MailCard from "./components/MailCards";
 import Timetable from "./components/Timetable";
 
+//App Component
 function App() {
-  const [selectedEvents, setSelectedEvents] = useState([]); //Array of user selected events
-  const [emailJson, setEmailJson] = useState({}); //
-  const [showTimeTable, setShowTimeTable] = useState(false);
+  //initizing UseStates 
+  const [selectedEvents, setSelectedEvents] = useState([]); //Array of user selected events [Obtain from MailCard.jsx]
+  const [emailJson, setEmailJson] = useState({}); //Whole email Data [Obtain from MailCard.jsx]
+  const [showTimeTable, setShowTimeTable] = useState(false); //Toggle between mailCard and Timetable
 
 
+//Send the selectedEvents and emailJson to Timetable.jsx + Toggle mailCard off to show Timetable
   const handleDoneButtonClick = (eventArr, emailJson) => {
     setSelectedEvents(eventArr);
     setEmailJson(emailJson);
@@ -26,4 +30,5 @@ function App() {
   );
 }
 
-export default App;
+//Exports
+export default App; 

@@ -1,15 +1,14 @@
+//Imports
 import React, { useState, useEffect } from "react";
 
+//MailCards Component
 function MailCards({ onDone }) {
-  //Using state to store the events user is intersted
-  const [emailJson, setEmailJson] = useState({ events: [] });
-
-  // Toggle modal visibility based on the card selected
+  //Initializing UseStates
+  const [emailJson, setEmailJson] = useState({ events: [] }); //Whole email Data
   const [activeModal, setActiveModal] = useState(null); // To track which modal is open
-  const toggleModal = (modalType) => {
-    setActiveModal(modalType);
-  };
+  const [selectedEvents, setSelectedEvents] = useState([]); //Array of user selected events
 
+  // Fetch data for the active modal
   useEffect(() => {
     const fetchData = async () => {
       if (!activeModal) return; // dont fetch if activeModal is null
@@ -24,11 +23,12 @@ function MailCards({ onDone }) {
       }
     };
     fetchData();
-  }, [activeModal]); // Dependency array includes activeModal
+  }, [activeModal]); // ActiveModal is a dependency
 
-  //Using state to store the events user is intersted
-  const [selectedEvents, setSelectedEvents] = useState([]);
-
+  
+  //Functions
+  
+  //Added user selected event's ID to selectedEvents
   const handleCheckboxChange = (eventId) => {
     setSelectedEvents((prevSelected) => {
       if (prevSelected.includes(eventId)) {
@@ -39,83 +39,53 @@ function MailCards({ onDone }) {
     });
   };
 
-  const handleModalClose = () => {
-    setSelectedEvents([]);
+  //Toggle modals Functions
+  const toggleModal = (modalType) => { //Set Active Modal
+    setActiveModal(modalType);
+  };
+
+  const handleModalClose = () => { //Close Modal [Reset states]
+    setSelectedEvents([]); // Reset selected events
     toggleModal(null);
   };
 
-  const handleDoneClick = () => {
+
+  //Button Functions
+  const handleDoneClick = () => { //Send the selectedEvents and emailJson to Timetable.jsx
     onDone(selectedEvents, emailJson);
     toggleModal(null);
   };
 
-  // Render modal for each email type
+
+  // Rendering 
+  
+  //modal for each email type
   const renderModal = (emailJson) => {
     const events = emailJson.events;
 
     return (
-      <div
-        className="modal fade show"
-        tabIndex="-1"
-        style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+      <div className="modal fade show" tabIndex="-1" style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }} aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                {emailJson.sender &&
-                  emailJson.sender.charAt(0).toUpperCase() +
-                    emailJson.sender.slice(1)}{" "}
-                Events:{" "}
-                {emailJson.edition &&
-                  emailJson.edition
-                    .split("-")
-                    .map((part, index) =>
-                      index === 0
-                        ? part.charAt(0).toUpperCase() + part.slice(1) 
-                        : part
-                    )
-                    .join(" to ")}
+                {/* The Heading over every Modal */}
+                {emailJson.sender && emailJson.sender.charAt(0).toUpperCase() + emailJson.sender.slice(1)}{" "} Events:{" "}
+                {emailJson.edition && emailJson.edition.split("-").map((part, index) => index === 0 ? part.charAt(0).toUpperCase() + part.slice(1) : part).join(" to ")}
               </h1>
-              <button
-                type="button"
-                className="btn-close"
-                onClick={handleModalClose}
-                aria-label="Close"
-              ></button>
+              <button type="button" className="btn-close" onClick={handleModalClose} aria-label="Close"></button>
             </div>
             <div className="modal-body">
               <ul className="list-group">
+                {/* Loops through each event */}
                 {events.map((event) => (
                   <li
                     key={event.id}
                     className="list-group-item d-flex align-items-center justify-content-start"
                     onClick={() => handleCheckboxChange(event.id)} // Click anywhere on the list item to toggle
-                    style={{
-                      cursor: "pointer",
-                      transition: "background-color 0.3s ease",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <span
-                      className="custom-checkbox"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        minWidth: "24px",
-                        minHeight: "24px",
-                        width: "24px",
-                        height: "24px",
-                        border: "2px solid #007bff",
-                        borderRadius: "3px",
-                        marginRight: "10px",
-                        position: "relative",
-                        transition: "border-color 0.3s ease",
-                      }}
-                    >
+                    style={{cursor: "pointer", transition: "background-color 0.3s ease", overflow: "hidden",}}>
+                    <span className="custom-checkbox" style={{display: "flex", alignItems: "center", justifyContent: "center", minWidth: "24px", minHeight: "24px", width: "24px", height: "24px", border: "2px solid #007bff", borderRadius: "3px", marginRight: "10px", position: "relative", transition: "border-color 0.3s ease",}}>
+                      {/* IMP INPUT: Checkbox */}
                       <input
                         className="form-check-input me-1"
                         type="checkbox"
@@ -260,4 +230,5 @@ function MailCards({ onDone }) {
   );
 }
 
+//Exports
 export default MailCards;
