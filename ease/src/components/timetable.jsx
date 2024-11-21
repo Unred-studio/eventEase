@@ -96,11 +96,8 @@ function Timetable({ eventsIdArr, emailData }) {
   const renderTabContent = () => {
     if (!activeTabContent) return null;
 
-    const renderEvents = emailData.events.filter((event) => {
-      return (
-        event.date === activeTabContent.format("YYYY-MM-DD") &&
-        eventsIdArr.includes(event.id)
-      );
+    const renderEvents = emailData.events.filter((event) => { //Filters the events which are on the selected date and store them in renderEvents
+      return (event.date === activeTabContent.format("YYYY-MM-DD") && eventsIdArr.includes(event.id));
     });
 
     return (
@@ -113,20 +110,7 @@ function Timetable({ eventsIdArr, emailData }) {
                 <div className="location">{event.location || "Location details not provided"}</div>
                 <h5>{event.name}</h5>
                 <p>{event.summary}</p>
-
-                {/* Add `mt-auto` to push the button to the bottom */}
-                <a
-                  href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-                    event.name
-                  )}&details=${encodeURIComponent(
-                    event.summary
-                  )}&location=${encodeURIComponent(
-                    event.location || ""
-                  )}&dates=${formatDateTime(event.date, event.time)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary mt-auto"
-                >
+                <a href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.name)}&details=${encodeURIComponent(event.summary)}&location=${encodeURIComponent(event.location || "")}&dates=${formatDateTime(event.date, event.time)}`} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-auto">
                   Add to Google Calendar
                 </a>
               </div>
@@ -157,20 +141,7 @@ function Timetable({ eventsIdArr, emailData }) {
                 <div className="date">{(dayjs(event.date).format("ddd, MMM DD") != "Invalid Date" && dayjs(event.date).format("ddd, MMM DD")) || "No date provided"}</div>
                 <h5>{event.name}</h5>
                 <p>{event.summary}</p>
-
-                {/* Add `mt-auto` to push the button to the bottom */}
-                <a
-                  href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-                    event.name
-                  )}&details=${encodeURIComponent(
-                    event.summary
-                  )}&location=${encodeURIComponent(
-                    event.location || ""
-                  )}&dates=${formatDateTime(event.date, event.time)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary mt-auto"
-                >
+                <a href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.name)}&details=${encodeURIComponent(event.summary)}&location=${encodeURIComponent(event.location || "")}&dates=${formatDateTime(event.date, event.time)}`} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-auto">
                   Add to Google Calendar
                 </a>
               </div>
