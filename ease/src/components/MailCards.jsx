@@ -25,9 +25,9 @@ function MailCards({ onDone }) {
     fetchData();
   }, [activeModal]); // ActiveModal is a dependency
 
-  
+
   //Functions
-  
+
   //Added user selected event's ID to selectedEvents
   const handleCheckboxChange = (eventId) => {
     setSelectedEvents((prevSelected) => {
@@ -58,7 +58,7 @@ function MailCards({ onDone }) {
 
 
   // Rendering 
-  
+
   //modal for each email type
   const renderModal = (emailJson) => {
     const events = emailJson.events;
@@ -67,6 +67,8 @@ function MailCards({ onDone }) {
       <div className="modal fade show" tabIndex="-1" style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }} aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
+
+            {/* Modal Header Start Here */}
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
                 {/* The Heading over every Modal */}
@@ -75,6 +77,10 @@ function MailCards({ onDone }) {
               </h1>
               <button type="button" className="btn-close" onClick={handleModalClose} aria-label="Close"></button>
             </div>
+            {/* Modal Header End Here */}
+
+
+            {/* Modal Body Start Here */}
             <div className="modal-body">
               <ul className="list-group">
                 {/* Loops through each event */}
@@ -83,51 +89,32 @@ function MailCards({ onDone }) {
                     key={event.id}
                     className="list-group-item d-flex align-items-center justify-content-start"
                     onClick={() => handleCheckboxChange(event.id)} // Click anywhere on the list item to toggle
-                    style={{cursor: "pointer", transition: "background-color 0.3s ease", overflow: "hidden",}}>
-                    <span className="custom-checkbox" style={{display: "flex", alignItems: "center", justifyContent: "center", minWidth: "24px", minHeight: "24px", width: "24px", height: "24px", border: "2px solid #007bff", borderRadius: "3px", marginRight: "10px", position: "relative", transition: "border-color 0.3s ease",}}>
+                    style={{ cursor: "pointer", transition: "background-color 0.3s ease", overflow: "hidden", }}>
+                    <span className="custom-checkbox" style={{ display: "flex", alignItems: "center", justifyContent: "center", minWidth: "24px", minHeight: "24px", width: "24px", height: "24px", border: "2px solid #007bff", borderRadius: "3px", marginRight: "10px", position: "relative", transition: "border-color 0.3s ease", }}>
                       {/* IMP INPUT: Checkbox */}
                       <input
                         className="form-check-input me-1"
                         type="checkbox"
-                        value={event.id}
-                        checked={selectedEvents.includes(event.id)}
-                        onChange={() => handleCheckboxChange(event.id)} // Keep checkbox functionality
+                        checked={selectedEvents.includes(event.id)} //if the event is selected then the checkbox will act as if it is check already
+                        onChange={() => handleCheckboxChange(event.id)} // When clicked on the checkbox it will send the Id of the selected event
                         style={{ display: "none" }} // Hide default checkbox
                       />
-                      {selectedEvents.includes(event.id) && (
-                        <span
-                          style={{
-                            position: "absolute",
-                            top: "2px",
-                            left: "6px",
-                            color: "#007bff",
-                            fontSize: "16px",
-                            fontWeight: "bold",
-                            lineHeight: "1", // Align checkmark properly
-                          }}
-                        >
+                      {selectedEvents.includes(event.id) && ( //if the checkbox is selected then it will have following style
+                        <span style={{ position: "absolute", top: "2px", left: "6px", color: "#007bff", fontSize: "16px", fontWeight: "bold", lineHeight: "1", }}>
                           ✓
                         </span>
                       )}
                     </span>
-                    <span
-                      className={`form-check-label ${
-                        selectedEvents.includes(event.id) ? "text-primary" : ""
-                      }`}
-                      style={{
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        maxWidth: "calc(100% - 40px)",
-                      }}
-                      title={event.name + " - " + event.summary} //creates Tooltip on hover
-                    >
+                    <span className={`form-check-label ${selectedEvents.includes(event.id) ? "text-primary" : ""}`} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "calc(100% - 40px)", }} title={event.name + " - " + event.summary}>
                       {event.name} - {event.summary}
                     </span>
                   </li>
                 ))}
               </ul>
             </div>
+            {/* Modal Body End Here */}
+
+            {/* Modal Footer Start Here */}
             <div className="modal-footer">
               <button
                 type="button"
@@ -148,12 +135,16 @@ function MailCards({ onDone }) {
                 Done
               </button>
             </div>
+            {/* Modal Footer End Here */}
+
           </div>
         </div>
       </div>
     );
   };
 
+
+  // Render the Cards
   return (
     <>
       <div className="d-flex justify-content-center align-items-center vh-100">
@@ -224,7 +215,7 @@ function MailCards({ onDone }) {
         </div>
       </div>
 
-      {/* Render Modal for Active Card */}
+      {/* Check and Render Modal for Active Card */}
       {activeModal && renderModal(emailJson)}
     </>
   );
