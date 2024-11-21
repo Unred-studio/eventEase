@@ -1,22 +1,32 @@
+// Imports
 import React, { useState, useEffect } from "react";
+//Dayjs Imports and Extensions start Here
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import utc from "dayjs/plugin/utc"; // Import the UTC plugin
 
 dayjs.extend(customParseFormat); // Extend with customParseFormat
 dayjs.extend(utc); // Extend with UTC plugin
+// Dayjs Imports and Extensions end Here
 
+// The Timetable component takes the array of event IDs and the email data as props
 function Timetable({ eventsIdArr, emailData }) {
-  const [activeTabContent, setActiveTabContent] = useState(null);
-  const [activeTab, setActiveTab] = useState(0);
+
+  //Initializing UseStates
+  const [activeTabContent, setActiveTabContent] = useState(null); // Show the Tab Content of selected date; array of dates
+  const [activeTab, setActiveTab] = useState(0); // Toggle to selected date Tab; array of index of dates
+
 
   useEffect(() => {
-    // Automatically preselect the first available day
     if (datesArr.length > 0) {
-      setActiveTabContent(datesArr[0]);
+      setActiveTabContent(datesArr[0]); //Automatically preselect the first available day
     }
-  }, []);
+  }, []); //Help to toggle the date tabs
 
+
+  //FUNCTIONS
+
+  //create an array of dates between startDate and endDate
   function getDatesInRange(edition) {
     let [startDate, endDate] = edition.split("-");
     startDate = startDate.charAt(0).toUpperCase() + startDate.slice(1);
@@ -37,14 +47,12 @@ function Timetable({ eventsIdArr, emailData }) {
 
     return dates;
   }
+  const datesArr = getDatesInRange(emailData.edition); //create an array of dates and assign it to datesArr
+  // getDatesInRange end Here
 
-  const datesArr = getDatesInRange(emailData.edition);
 
-  const toggleTabContent = (date, index) => {
-    setActiveTabContent(date);
-    setActiveTab(index);
-  };
 
+  // Format date and time for Google Calendar
   const formatDateTime = (date, time) => {
     if (!date) return null;
 
@@ -72,6 +80,17 @@ function Timetable({ eventsIdArr, emailData }) {
       return `${formattedDate}/${formattedDate}`; // All-day event
     }
   };
+  // formateDateTime end Here
+
+  //onCLick Function
+
+  const toggleTabContent = (date, index) => {   // Change the active tab and tab content on click
+    setActiveTabContent(date);
+    setActiveTab(index);
+  };
+
+
+  //RENDER TAB CONTENT
 
   // Filter events in range of selected date
   const renderTabContent = () => {
@@ -164,82 +183,61 @@ function Timetable({ eventsIdArr, emailData }) {
     );
   };
 
+  //Render the timetable component
   return (
     <div className="schedules-area pd-top-110 pd-bottom-120">
       <div className="container">
+
+        {/* Rendering the section title */}
         <div className="row justify-content-center">
           <div className="col-xl-7 col-lg-8">
             <div className="section-title text-center">
               <h2>Event Schedules</h2>
-              <p>
-                Check out the event schedules and add them to your calendar.
-              </p>
+              <p>Check out the event schedules and add them to your calendar.</p>
             </div>
           </div>
         </div>
-  
-        {/* Tab Buttons with margin for space */}
-        <div className="evt-tab-inner text-center mb-4"> 
+        {/* Rendering the section title End Here */}
+
+        {/* Rendering the tab navigation */}
+        <div className="evt-tab-inner text-center mb-4">
           <ul className="nav nav-tabs" role="tablist">
+            {/* Rendering the date tabs based on the datesArr */}
             {datesArr.map((date, index) => (
               <li className="nav-item" role="presentation" key={index}>
-                <a
-                  className={`nav-link ${activeTab === index ? "active" : ""}`}
-                  
-                  data-toggle="pill"
-                  
-                  role="tab"
-                  aria-selected={activeTab === index ? "true" : "false"}
-                  onClick={() => toggleTabContent(date, index)}
-                >
+                <a className={`nav-link ${activeTab === index ? "active" : ""}`} data-toggle="pill" role="tab" aria-selected={activeTab === index ? "true" : "false"} onClick={() => toggleTabContent(date, index)}>
                   <span>Day {index + 1} </span>
                   {date.format("ddd, MMM DD")}
                 </a>
               </li>
             ))}
+            {/* Rendering the "Others" tab */}
             <li className="nav-item" role="presentation">
-              <a
-                className={`nav-link ${
-                  activeTab === "outOfRange" ? "active" : ""
-                }`}
-                id="ex1-tab-outOfRange"
-                data-toggle="pill"
-                href="#ex1-tabs-outOfRange"
-                role="tab"
-                aria-selected={activeTab === "outOfRange" ? "true" : "false"}
-                onClick={() => setActiveTab("outOfRange")}
-              >
+              <a className={`nav-link ${activeTab === "outOfRange" ? "active" : ""}`} id="ex1-tab-outOfRange" data-toggle="pill" href="#ex1-tabs-outOfRange" role="tab" aria-selected={activeTab === "outOfRange" ? "true" : "false"} onClick={() => setActiveTab("outOfRange")}>
                 <span>Others</span>
               </a>
             </li>
           </ul>
         </div>
-  
-        {/* Tab Content with top margin */}
-        <div className="tab-content" id="ex1-content" style={{ marginTop: '20px' }}> {/* Added marginTop for gap */}
+
+        {/* Render Tab content */}
+        <div className="tab-content" id="ex1-content" style={{ marginTop: '20px' }}>
           {activeTab !== "outOfRange" && (
-            <div
-              className="tab-pane fade active show"
-              id={`ex1-tabs-${activeTab + 1}`}
-              role="tabpanel"
-            >
+            <div className="tab-pane fade active show" id={`ex1-tabs-${activeTab + 1}`} role="tabpanel">
               {renderTabContent()}
             </div>
           )}
           {activeTab === "outOfRange" && (
-            <div
-              className="tab-pane fade active show"
-              id="ex1-tabs-outOfRange"
-              role="tabpanel"
-            >
+            <div className="tab-pane fade active show" id="ex1-tabs-outOfRange" role="tabpanel">
               {renderOutOfRangeEvents()}
             </div>
           )}
         </div>
+        {/* Render Tab content end Here */}
       </div>
     </div>
   );
-  
+
 }
 
 export default Timetable;
