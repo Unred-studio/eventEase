@@ -7,14 +7,12 @@ import Timetable from "./components/Timetable";
 function App() {
   //initizing UseStates 
   const [selectedEvents, setSelectedEvents] = useState([]); //Array of user selected events [Obtain from MailCard.jsx]
-  const [emailJson, setEmailJson] = useState({}); //Whole email Data [Obtain from MailCard.jsx]
   const [showTimeTable, setShowTimeTable] = useState(false); //Toggle between mailCard and Timetable
 
 
-//Send the selectedEvents and emailJson to Timetable.jsx + Toggle mailCard off to show Timetable
-  const handleDoneButtonClick = (eventArr, emailJson) => {
+  //Send the selectedEvents and emailJson to Timetable.jsx + Toggle mailCard off to show Timetable
+  const handleDoneButtonClick = (eventArr) => {
     setSelectedEvents(eventArr);
-    setEmailJson(emailJson);
     setShowTimeTable(true);
   };
 

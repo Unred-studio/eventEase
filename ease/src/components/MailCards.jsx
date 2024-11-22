@@ -31,13 +31,39 @@ function MailCards({ onDone }) {
   //Added user selected event's ID to selectedEvents
   const handleCheckboxChange = (eventId) => {
     setSelectedEvents((prevSelected) => {
-      if (prevSelected.includes(eventId)) {
-        return prevSelected.filter((id) => id !== eventId); // Remove if already selected
-      } else {
-        return [...prevSelected, eventId]; // Add if not selected
+      // Map activeModal to array indices
+      const modalIndexMap = {
+        Lassonde: 0,
+        Bethune: 1,
+        York: 2,
+      };
+
+      // Get the active modal's index
+      const modalIndex = modalIndexMap[activeModal];
+
+      if (modalIndex === undefined) {
+        console.error("Unknown modal:", activeModal);
+        return prevSelected; // Return previous state if activeModal is invalid
       }
+
+      // Ensure the structure is correct (initialize missing subarrays)
+      const newSelected = [...prevSelected];
+      while (newSelected.length <= modalIndex) {
+        newSelected.push([]); // Add empty arrays if missing
+      }
+
+      // Add or remove the eventId in the corresponding subarray
+      const modalEvents = newSelected[modalIndex];
+      if (modalEvents.includes(eventId)) {
+        newSelected[modalIndex] = modalEvents.filter((id) => id !== eventId); // Remove the eventId
+      } else {
+        newSelected[modalIndex] = [...modalEvents, eventId]; // Add the eventId
+      }
+
+      return newSelected;
     });
   };
+
 
   //Toggle modals Functions
   const toggleModal = (modalType) => { //Set Active Modal
@@ -52,7 +78,7 @@ function MailCards({ onDone }) {
 
   //Button Functions
   const handleDoneClick = () => { //Send the selectedEvents and emailJson to Timetable.jsx
-    onDone(selectedEvents, emailJson);
+    onDone(selectedEvents);
     toggleModal(null);
   };
 
@@ -128,7 +154,6 @@ function MailCards({ onDone }) {
                 className="btn btn-primary"
                 onClick={() => {
                   toggleModal(null);
-                  handleDoneClick();
                   // TODO: Handle 'Done' action (e.g., navigate to timetable)
                 }}
               >
@@ -213,7 +238,20 @@ function MailCards({ onDone }) {
             </div>
           </div>
         </div>
+
+        {/* Create Schedule Button */}
+        <div className="d-flex justify-content-center mt-4">
+          <button
+            className="btn btn-primary btn-lg"
+            onClick={() => {
+              handleDoneClick();
+            }} // Pass an example event ID here
+          >
+            Create Schedule
+          </button>
+        </div>
       </div>
+
 
       {/* Check and Render Modal for Active Card */}
       {activeModal && renderModal(emailJson)}
