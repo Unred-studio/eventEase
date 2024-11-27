@@ -2,40 +2,35 @@
 import React, { useState, useEffect } from "react";
 
 //MailCards Component
-function MailCards({ onDone }) {
+function MailCards({ emailData, onDone }) {
   //Initializing UseStates
   const [emailJson, setEmailJson] = useState({ events: [] }); //Whole email Data
   const [activeModal, setActiveModal] = useState(null); // To track which modal is open
-  const [selectedEvents, setSelectedEvents] = useState([]); //Array of user selected events
+  const [selectedEvents, setSelectedEvents] = useState([[], [], []]); //Array of user selected events
 
   // Fetch data for the active modal
   useEffect(() => {
-    const fetchData = async () => {
-      if (!activeModal) return; // dont fetch if activeModal is null
-      try {
-        const response = await fetch(
-          `http://localhost:3001/${activeModal}.json`
-        );
-        const data = await response.json();
-        setEmailJson(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
+    if (!activeModal) return; // dont fetch if activeModal is null
+    if (activeModal === "lassonde") {
+      setEmailJson(emailData.lassondeData);
+    } else if (activeModal === "bethune") {
+      setEmailJson(emailData.bethuneData);
+    } else {
+      setEmailJson(emailData.yorkData);
+    }
   }, [activeModal]); // ActiveModal is a dependency
-
 
   //Functions
 
   //Added user selected event's ID to selectedEvents
   const handleCheckboxChange = (eventId) => {
+    console.log("Event ID:", eventId);
     setSelectedEvents((prevSelected) => {
       // Map activeModal to array indices
       const modalIndexMap = {
-        Lassonde: 0,
-        Bethune: 1,
-        York: 2,
+        lassonde: 0,
+        bethune: 1,
+        york: 2,
       };
 
       // Get the active modal's index
@@ -60,87 +55,143 @@ function MailCards({ onDone }) {
         newSelected[modalIndex] = [...modalEvents, eventId]; // Add the eventId
       }
 
+      console.log("Selected events:", newSelected);
       return newSelected;
     });
   };
 
+  const checkIfEventSelected = (eventId) => {
+    if (activeModal === "lassonde") {
+      return selectedEvents[0].includes(eventId); // Check if the event ID is in the first subarray
+    } else if (activeModal === "bethune") {
+      return selectedEvents[1].includes(eventId); // Check if the event ID is in the second subarray
+    } else {
+      return selectedEvents[2].includes(eventId); // Check if the event ID is in the third subarray
+    }
+  };
 
   //Toggle modals Functions
-  const toggleModal = (modalType) => { //Set Active Modal
+  const toggleModal = (modalType) => {
+    //Set Active Modal
     setActiveModal(modalType);
   };
 
-  const handleModalClose = () => { //Close Modal [Reset states]
-    setSelectedEvents([]); // Reset selected events
+  const handleModalClose = () => {
+    //Close Modal [Reset states]
+    // setSelectedEvents([]); // Reset selected events
     toggleModal(null);
   };
-
 
   //Button Functions
-  const handleDoneClick = () => { //Send the selectedEvents and emailJson to Timetable.jsx
-    onDone(selectedEvents);
+  const handleDoneClick = () => {
+    //Send the selectedEvents and emailJson to Timetable.jsx
     toggleModal(null);
   };
 
-
-  // Rendering 
+  // Rendering
 
   //modal for each email type
   const renderModal = (emailJson) => {
     const events = emailJson.events;
-
+  
     return (
-      <div className="modal fade show" tabIndex="-1" style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }} aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div
+        className="modal fade show"
+        tabIndex="-1"
+        style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
         <div className="modal-dialog">
           <div className="modal-content">
-
-            {/* Modal Header Start Here */}
+            {/* Modal Header */}
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                {/* The Heading over every Modal */}
-                {emailJson.sender && emailJson.sender.charAt(0).toUpperCase() + emailJson.sender.slice(1)}{" "} Events:{" "}
-                {emailJson.edition && emailJson.edition.split("-").map((part, index) => index === 0 ? part.charAt(0).toUpperCase() + part.slice(1) : part).join(" to ")}
+                {emailJson.sender &&
+                  emailJson.sender.charAt(0).toUpperCase() +
+                    emailJson.sender.slice(1)}{" "}
+                Events
               </h1>
-              <button type="button" className="btn-close" onClick={handleModalClose} aria-label="Close"></button>
+              <button
+                type="button"
+                className="btn-close"
+                onClick={handleModalClose}
+                aria-label="Close"
+              ></button>
             </div>
-            {/* Modal Header End Here */}
-
-
-            {/* Modal Body Start Here */}
+  
+            {/* Modal Body */}
             <div className="modal-body">
               <ul className="list-group">
-                {/* Loops through each event */}
                 {events.map((event) => (
                   <li
                     key={event.id}
-                    className="list-group-item d-flex align-items-center justify-content-start"
-                    onClick={() => handleCheckboxChange(event.id)} // Click anywhere on the list item to toggle
-                    style={{ cursor: "pointer", transition: "background-color 0.3s ease", overflow: "hidden", }}>
-                    <span className="custom-checkbox" style={{ display: "flex", alignItems: "center", justifyContent: "center", minWidth: "24px", minHeight: "24px", width: "24px", height: "24px", border: "2px solid #007bff", borderRadius: "3px", marginRight: "10px", position: "relative", transition: "border-color 0.3s ease", }}>
-                      {/* IMP INPUT: Checkbox */}
-                      <input
-                        className="form-check-input me-1"
-                        type="checkbox"
-                        checked={selectedEvents.includes(event.id)} //if the event is selected then the checkbox will act as if it is check already
-                        onChange={() => handleCheckboxChange(event.id)} // When clicked on the checkbox it will send the Id of the selected event
-                        style={{ display: "none" }} // Hide default checkbox
-                      />
-                      {selectedEvents.includes(event.id) && ( //if the checkbox is selected then it will have following style
-                        <span style={{ position: "absolute", top: "2px", left: "6px", color: "#007bff", fontSize: "16px", fontWeight: "bold", lineHeight: "1", }}>
+                    className={`list-group-item d-flex align-items-center justify-content-start ${
+                      checkIfEventSelected(event.id) ? "bg-light text-primary" : ""
+                    }`}
+                    onClick={() => handleCheckboxChange(event.id)}
+                    style={{
+                      cursor: "pointer",
+                      transition: "background-color 0.3s ease",
+                    }}
+                  >
+                    {/* Custom Checkbox */}
+                    <span
+                      className="custom-checkbox"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        minWidth: "24px",
+                        minHeight: "24px",
+                        border: "2px solid #007bff",
+                        borderRadius: "3px",
+                        marginRight: "10px",
+                        position: "relative",
+                        backgroundColor: checkIfEventSelected(event.id)
+                          ? "#007bff"
+                          : "transparent",
+                        transition: "background-color 0.3s ease",
+                      }}
+                    >
+                      {checkIfEventSelected(event.id) && (
+                        <span
+                          style={{
+                            position: "absolute",
+                            top: "2px",
+                            left: "6px",
+                            color: "#fff",
+                            fontSize: "16px",
+                            fontWeight: "bold",
+                            lineHeight: "1",
+                          }}
+                        >
                           ✓
                         </span>
                       )}
                     </span>
-                    <span className={`form-check-label ${selectedEvents.includes(event.id) ? "text-primary" : ""}`} style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "calc(100% - 40px)", }} title={event.name + " - " + event.summary}>
+  
+                    {/* Event Details */}
+                    <span
+                      className={`form-check-label ${
+                        checkIfEventSelected(event.id) ? "text-primary" : ""
+                      }`}
+                      style={{
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        maxWidth: "calc(100% - 40px)",
+                      }}
+                      title={event.name + " - " + event.summary}
+                    >
                       {event.name} - {event.summary}
                     </span>
                   </li>
                 ))}
               </ul>
             </div>
-            {/* Modal Body End Here */}
-
-            {/* Modal Footer Start Here */}
+  
+            {/* Modal Footer */}
             <div className="modal-footer">
               <button
                 type="button"
@@ -152,27 +203,23 @@ function MailCards({ onDone }) {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={() => {
-                  toggleModal(null);
-                  // TODO: Handle 'Done' action (e.g., navigate to timetable)
-                }}
+                onClick={handleDoneClick}
               >
                 Done
               </button>
             </div>
-            {/* Modal Footer End Here */}
-
           </div>
         </div>
       </div>
     );
   };
-
+  
 
   // Render the Cards
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center vh-100">
+      <div className="d-flex flex-column justify-content-center align-items-center vh-100">
+        {/* Cards Container */}
         <div className="row row-cols-1 row-cols-md-3 g-4 w-100 mx-auto">
           {/* Lassonde Card */}
           <div className="col">
@@ -195,7 +242,7 @@ function MailCards({ onDone }) {
               </div>
             </div>
           </div>
-
+  
           {/* Bethune Card */}
           <div className="col">
             <div className="card h-100">
@@ -216,7 +263,7 @@ function MailCards({ onDone }) {
               </div>
             </div>
           </div>
-
+  
           {/* York Card */}
           <div className="col">
             <div className="card h-100">
@@ -238,25 +285,25 @@ function MailCards({ onDone }) {
             </div>
           </div>
         </div>
-
+  
         {/* Create Schedule Button */}
-        <div className="d-flex justify-content-center mt-4">
+        <div className="mt-4">
           <button
             className="btn btn-primary btn-lg"
             onClick={() => {
-              handleDoneClick();
-            }} // Pass an example event ID here
+              onDone(selectedEvents);
+            }}
           >
             Create Schedule
           </button>
         </div>
       </div>
-
-
+  
       {/* Check and Render Modal for Active Card */}
       {activeModal && renderModal(emailJson)}
     </>
   );
+  
 }
 
 //Exports

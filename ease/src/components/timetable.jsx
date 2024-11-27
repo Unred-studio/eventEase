@@ -11,6 +11,9 @@ dayjs.extend(utc); // Extend with UTC plugin
 
 // The Timetable component takes the array of event IDs and the email data as props
 function Timetable({ eventsIdArr, emailData }) {
+  console.log("Email Data:", emailData);
+  console.log("Events ID Array:", eventsIdArr);
+
 
   //Initializing UseStates
   const [activeTabContent, setActiveTabContent] = useState(null); // Show the Tab Content of selected date; array of dates
@@ -158,6 +161,8 @@ function Timetable({ eventsIdArr, emailData }) {
   return (
     <div className="schedules-area pd-top-110 pd-bottom-120">
       <div className="container">
+
+        {length(eventsIdArr.flat()) === 0 ? <h1 className="text-center">No events found</h1> : null}
 
         {/* Rendering the section title */}
         <div className="row justify-content-center">
