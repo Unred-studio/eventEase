@@ -4,16 +4,19 @@ import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import utc from "dayjs/plugin/utc"; // Import the UTC plugin
+import minMax from 'dayjs/plugin/minMax' 
 
 dayjs.extend(customParseFormat); // Extend with customParseFormat
 dayjs.extend(utc); // Extend with UTC plugin
+dayjs.extend(minMax)
 // Dayjs Imports and Extensions end Here
 
 // The Timetable component takes the array of event IDs and the email data as props
 function Timetable({ eventsIdArr, emailData }) {
-  console.log("Email Data:", emailData);
-  console.log("Events ID Array:", eventsIdArr);
 
+    let lassondeData = emailData.lassondeData;
+    let bethuneData = emailData.bethuneData;
+    let yorkData = emailData.yorkData;
 
   //Initializing UseStates
   const [activeTabContent, setActiveTabContent] = useState(null); // Show the Tab Content of selected date; array of dates
@@ -30,19 +33,30 @@ function Timetable({ eventsIdArr, emailData }) {
   //FUNCTIONS
 
   //create an array of dates between startDate and endDate
-  function getDatesInRange(edition) {
-    let [startDate, endDate] = edition.split("-");
-    startDate = startDate.charAt(0).toUpperCase() + startDate.slice(1);
-    endDate = endDate.charAt(0).toUpperCase() + endDate.slice(1);
+  function getDatesInRange() {
+    let editionList = []
+    editionList.push(
+      lassondeData.edition.split("-")[0],
+      lassondeData.edition.split("-")[1],
+      bethuneData.edition.split("-")[0],
+      bethuneData.edition.split("-")[1],
+      yorkData.edition.split("-")[0],
+      yorkData.edition.split("-")[1]
+    );
+    console.log(editionList);
+    let endDateArr = editionList.map((endDate) => {
+      let formattedDate  = endDate.charAt(0).toUpperCase() + endDate.slice(1)+"2024";
+      return dayjs(formattedDate , "MMMDDYYYY");
+    });
+    let endDate = dayjs.max(...endDateArr);
+    let startDate = dayjs.min(...endDateArr);
+    console.log(startDate, endDate);
 
-    startDate = dayjs(startDate + "2024", "MMMDDYYYY");
-    endDate = dayjs(endDate + "2024", "MMMDDYYYY");
     let dates = [];
-    let currentDate = dayjs(startDate);
+    let currentDate = startDate;
 
     while (
-      currentDate.isBefore(endDate) ||
-      currentDate.isSame(endDate, "day")
+      currentDate.isBefore(endDate) || currentDate.isSame(endDate, "day")
     ) {
       dates.push(currentDate);
       currentDate = currentDate.add(1, "day");
@@ -50,7 +64,9 @@ function Timetable({ eventsIdArr, emailData }) {
 
     return dates;
   }
-  const datesArr = getDatesInRange(emailData.edition); //create an array of dates and assign it to datesArr
+  const datesArr = getDatesInRange(); //create an array of dates and assign it to datesArr
+  console.log(datesArr);
+  
   // getDatesInRange end Here
 
 
@@ -162,7 +178,7 @@ function Timetable({ eventsIdArr, emailData }) {
     <div className="schedules-area pd-top-110 pd-bottom-120">
       <div className="container">
 
-        {length(eventsIdArr.flat()) === 0 ? <h1 className="text-center">No events found</h1> : null}
+        {(eventsIdArr.flat()).length === 0 ? <h1 className="text-center">No events found</h1> : null}
 
         {/* Rendering the section title */}
         <div className="row justify-content-center">

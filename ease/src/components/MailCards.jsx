@@ -24,7 +24,6 @@ function MailCards({ emailData, onDone }) {
 
   //Added user selected event's ID to selectedEvents
   const handleCheckboxChange = (eventId) => {
-    console.log("Event ID:", eventId);
     setSelectedEvents((prevSelected) => {
       // Map activeModal to array indices
       const modalIndexMap = {
@@ -55,7 +54,6 @@ function MailCards({ emailData, onDone }) {
         newSelected[modalIndex] = [...modalEvents, eventId]; // Add the eventId
       }
 
-      console.log("Selected events:", newSelected);
       return newSelected;
     });
   };

@@ -1,5 +1,5 @@
 //Imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MailCard from "./components/MailCards";
 import Timetable from "./components/Timetable";
 
@@ -16,11 +16,15 @@ function App() {
   };
 
   //Email Data Fecthing
-  let data = {
+  const [data, setData]= useState({
     lassondeData: {},
     bethuneData: {},
     yorkData: {},
-  };
+  });
+  
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(()=> {
   const fetchData = async () => {
     try {
       const [lassondeEmail, bethuneEmail, yorkEmail] = await Promise.all([
@@ -29,20 +33,30 @@ function App() {
         fetch(`http://localhost:3001/york.json`),
       ]);
 
-      data.lassondeData = await lassondeEmail.json();
-      data.bethuneData = await bethuneEmail.json();
-      data.yorkData = await yorkEmail.json();
+      let lassondeData = await lassondeEmail.json();
+      let bethuneData = await bethuneEmail.json();
+      let yorkData = await yorkEmail.json();
 
-      console.log("Fetched data:", data); // Optional: Debugging output
+      setData({
+        lassondeData: lassondeData,
+        bethuneData: bethuneData,
+        yorkData: yorkData,
+      });
+
+      setIsLoading(false);
+
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
   fetchData();
+}, []);
 
   return (
     <div>
+      {isLoading ? (<p>Loading...</p>) :(
+        <>
       {/* Show MailCard if timetable is not visible */}
       {!showTimeTable && (
         <MailCard emailData={data} onDone={handleDoneButtonClick} />
@@ -51,6 +65,8 @@ function App() {
       {/* Show Timetable component when "Done" is clicked */}
       {showTimeTable && (
         <Timetable eventsIdArr={selectedEvents} emailData={data} />
+      )}
+      </>
       )}
     </div>
   );
