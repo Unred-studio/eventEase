@@ -43,14 +43,12 @@ function Timetable({ eventsIdArr, emailData }) {
       yorkData.edition.split("-")[0],
       yorkData.edition.split("-")[1]
     );
-    console.log(editionList);
     let endDateArr = editionList.map((endDate) => {
       let formattedDate  = endDate.charAt(0).toUpperCase() + endDate.slice(1)+"2024";
       return dayjs(formattedDate , "MMMDDYYYY");
     });
     let endDate = dayjs.max(...endDateArr);
     let startDate = dayjs.min(...endDateArr);
-    console.log(startDate, endDate);
 
     let dates = [];
     let currentDate = startDate;
@@ -65,7 +63,6 @@ function Timetable({ eventsIdArr, emailData }) {
     return dates;
   }
   const datesArr = getDatesInRange(); //create an array of dates and assign it to datesArr
-  console.log(datesArr);
   
   // getDatesInRange end Here
 
@@ -115,9 +112,18 @@ function Timetable({ eventsIdArr, emailData }) {
   const renderTabContent = () => {
     if (!activeTabContent) return null;
 
-    const renderEvents = emailData.events.filter((event) => { //Filters the events which are on the selected date and store them in renderEvents
-      return (event.date === activeTabContent.format("YYYY-MM-DD") && eventsIdArr.includes(event.id));
-    });
+    const renderEvents = []
+    renderEvents.push(...lassondeData.events.filter((event) => { //Filters the events which are on the selected date and store them in renderEvents
+      return (event.date === activeTabContent.format("YYYY-MM-DD") && eventsIdArr[0].includes(event.id));
+    }));
+
+    renderEvents.push(...bethuneData.events.filter((event) => {
+      return (event.date === activeTabContent.format("YYYY-MM-DD") && eventsIdArr[1].includes(event.id));
+    }));
+
+    renderEvents.push(...yorkData.events.filter((event) => {
+      return (event.date === activeTabContent.format("YYYY-MM-DD") && eventsIdArr[2].includes(event.id));
+    }));
 
     return (
       <div className="row g-4">
@@ -144,10 +150,22 @@ function Timetable({ eventsIdArr, emailData }) {
 
   // Filter out-of-range events
   const renderOutOfRangeEvents = () => {
-    const outOfRangeEvents = emailData.events.filter((event) => {
+    const outOfRangeEvents = []
+    outOfRangeEvents.push(...lassondeData.events.filter((event) => {
       const eventDate = dayjs(event.date);
-      return !datesArr.some((date) => date.isSame(eventDate, "day"));
-    });
+      return !datesArr.some((date) => date.isSame(eventDate, "day")) && eventsIdArr[0].includes(event.id);
+    }));
+
+    outOfRangeEvents.push(...bethuneData.events.filter((event) => {
+      const eventDate = dayjs(event.date);
+      return !datesArr.some((date) => date.isSame(eventDate, "day")) && eventsIdArr[1].includes(event.id);
+    }));
+
+    outOfRangeEvents.push(...yorkData.events.filter((event) => {
+      const eventDate = dayjs(event.date);
+      return !datesArr.some((date) => date.isSame(eventDate, "day")) && eventsIdArr[2].includes(event.id);
+    }));
+
 
     return (
       <div className="row g-4">
